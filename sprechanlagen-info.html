@@ -1,0 +1,2605 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprechanlagen für Ein- & Mehrfamilienhaus | Metzler</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 184.3 184.3'%3E%3Crect width='184.3' height='184.3' rx='5.75' fill='%23cc322b'/%3E%3Cpath fill='%23fff' d='M70.19,34.81l19.04,32.98-9.58,16.57-28.59-49.55h19.13ZM70.28,108.58h0l-23.45-40.64v85.89h-16.57V34.81h16.57l33.02,57.21L123.92,15.65h19.13l-63.22,109.52-9.58-16.57.02-.02ZM153.14,153.83h-16.57v-85.87l-33,57.14h-19.13l52.11-90.28h16.57v119.02l.02-.02Z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Legacy short tokens — kept verbatim; the "Verkabelung verstehen" diagram
+         section (.topo-apple and its descendants) still reads these by name. */
+      --teal-50: #F2F6F6;
+      --teal-100: #E6EEEE;
+      --teal-500: #015253;
+      --teal-600: #014A4B;
+      --teal-700: #013E3E;
+      --teal-900: #001D1D;
+      --teal-mint: #5CDBD3;
+      --metzler-rot: #D42924;
+      --digital-schwarz: #1A171B;
+      --green: #009951;
+      --red-500: #C90000;
+      --paper-white: #F5F6FA;
+      --graphite-100: #F0F0F0;
+      --graphite-200: #E6E6E8;
+      --graphite-300: #DADADA;
+      --graphite-500: #A1A1A1;
+      --graphite-600: #7A7A82;
+      --graphite-700: #54545C;
+      --graphite-800: #2E2E36;
+      --graphite-900: #1A1A1F;
+      --white: #FFFFFF;
+      --white-50: rgba(255,255,255,0.5);
+      --font: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+      /* ── Metzler design system — official token names (metzler-ui-kit) ──
+           Used by every section EXCEPT "Verkabelung verstehen", which keeps
+           the legacy tokens above untouched by request. */
+      --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --color-teal-50:  #F2F6F6;
+      --color-teal-75:  #E3F2F0;
+      --color-teal-100: #E6EEEE;
+      --color-teal:     #015253;
+      --color-teal-600: #014A4B;
+      --color-teal-700: #01292A;
+      --color-teal-900: #001D1D;
+      --color-metzler-rot:   #D42924;
+      --color-digital-black: #1A171B;
+      --color-green: #009951;
+      --color-red-50: #FFF0EF;
+      --color-red: #D42924;
+      --color-red-600: #B52320;
+      --color-red-900: #4D0E0D;
+      --color-mint: #5CDBD3;
+      --color-star: #FFC041;
+      --color-white: #FFFFFF;
+      --color-paper: #F5F6FA;
+      --color-graphite-100: #F0F0F0;
+      --color-graphite-200: #E6E6E8;
+      --color-graphite-300: #DADADA;
+      --color-graphite-400: #BFBFC2;
+      --color-graphite-450: #CCCCCC;
+      --color-graphite-500: #A1A1A1;
+      --color-graphite-600: #6A6A6A;
+      --color-graphite-700: #54545C;
+      --color-graphite-800: #2E2E36;
+      --color-graphite-850: #333333;
+      --color-graphite-900: #1A1A1F;
+      --radius-sm: 0.125rem;
+      --radius: 0.25rem;
+      --radius-lg: 0.5rem;
+      --radius-xl: 0.75rem;
+      --radius-pill: 624.94rem;
+      --shadow-card:  0 0.125rem 0.5rem rgba(0,0,0,0.08);
+      --shadow-hover: 0 0.25rem 1.25rem rgba(0,0,0,0.10);
+      --shadow-modal: 0 1.25rem 3.75rem rgba(0,0,0,0.2), 0 0.25rem 1rem rgba(0,0,0,0.1);
+      --gradient-brand:  linear-gradient(90deg, #01292A 0%, #011D1E 50%, #000000 100%);
+      --gradient-accent: linear-gradient(135deg, #5CDBD3 0%, #015253 100%);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      font-family: var(--font);
+      background: var(--color-paper);
+      color: var(--white);
+    }
+
+    ::selection { background: var(--teal-500); color: var(--white); }
+    ::-webkit-scrollbar { width: 0.375rem; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--teal-700); border-radius: 0.1875rem; }
+
+    /* ── UTILITY ── */
+    /* Base container = Metzler design-system spec (100rem / 4rem sides).
+       .topo-apple overrides this back to its original 80rem/2rem below,
+       so "Verkabelung verstehen" keeps its exact current width. */
+    .container { max-width: 100rem; margin: 0 auto; padding: 0 4rem; }
+    @media (max-width: 48rem) { .container { padding: 0 1.5rem; } }
+    .topo-apple .container { max-width: 80rem; padding: 0 2rem; }
+    @media (max-width: 48rem) { .topo-apple .container { padding: 0 2rem; } }
+
+    /* ── NEW SECTIONS — Metzler design system primitives ── */
+    .section     { padding: 4rem 0; }
+    .section--sm { padding: 2.5rem 0; }
+    .section--lg { padding: 6rem 0; }
+    .section--color-white { background: var(--color-white); }
+    .section--tinted { background: var(--color-paper); }
+    .section--dark { background: var(--color-teal-900); color: var(--color-white); }
+    @media (max-width: 48rem) {
+      .section     { padding: 2.5rem 0; }
+      .section--sm { padding: 1.75rem 0; }
+      .section--lg { padding: 3.5rem 0; }
+    }
+    .overline {
+      font-size: 0.75rem; font-weight: 700; line-height: 1.4; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--color-graphite-600); font-family: var(--font-family);
+      margin: 0 0 0.5rem;
+    }
+    .section--dark .overline { color: var(--color-mint); }
+    .section-intro { margin-bottom: 2.5rem; max-width: 44rem; }
+    .section-intro--center { text-align: center; margin-left: auto; margin-right: auto; }
+    .section-intro h2 { margin-bottom: 0.625rem; }
+    .section-intro__lead {
+      font-size: 1.125rem; color: var(--color-graphite-700); line-height: 1.6; font-family: var(--font-family);
+    }
+    .section--dark .section-intro__lead { color: rgba(255,255,255,0.72); }
+    h1, .h1 { font-size: 1.875rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; color: var(--color-digital-black); font-family: var(--font-family); margin: 0 0 1rem; }
+    h2, .h2 { font-size: 1.5rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; color: var(--color-digital-black); font-family: var(--font-family); margin: 0 0 0.875rem; }
+    h3, .h3 { font-size: 1.25rem; font-weight: 700; line-height: 1.35; letter-spacing: -0.01em; color: var(--color-digital-black); font-family: var(--font-family); margin: 0 0 0.75rem; }
+    h4, .h4 { font-size: 1.125rem; font-weight: 700; line-height: 1.375; letter-spacing: -0.005em; color: var(--color-digital-black); font-family: var(--font-family); margin: 0 0 0.625rem; }
+    .section--dark h1, .section--dark h2, .section--dark h3, .section--dark h4 { color: var(--color-white); }
+    .display-4 { font-size: 2.875rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-family); }
+    .card {
+      background: var(--color-white); border: 0.0625rem solid var(--color-graphite-200);
+      border-radius: var(--radius-lg); overflow: hidden; transition: box-shadow 0.18s, border-color 0.18s;
+    }
+    .card:hover { box-shadow: var(--shadow-hover); border-color: var(--color-graphite-300); }
+    .card-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: var(--radius-lg);
+      background: rgba(1,82,83,0.08); color: var(--color-teal);
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .card-icon svg { width: 1.375rem; height: 1.375rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      height: 2.75rem; padding: 0 1.375rem; font-size: 1rem; font-weight: 500; font-family: var(--font-family);
+      border: none; border-radius: var(--radius); cursor: pointer; text-decoration: none; white-space: nowrap;
+      transition: background 0.14s, color 0.14s, border-color 0.14s;
+    }
+    .btn--lg { height: 3.25rem; padding: 0 2rem; font-size: 1.0625rem; }
+    .btn--primary { background: var(--color-teal); color: #fff; }
+    .btn--primary:hover { background: var(--color-teal-600); }
+    .btn--secondary { background: transparent; color: var(--color-teal); border: 0.125rem solid var(--color-teal); }
+    .btn--secondary:hover { background: var(--color-teal-50); }
+    .section--dark .btn--secondary { color: var(--color-white); border-color: rgba(255,255,255,0.4); }
+    .section--dark .btn--secondary:hover { background: rgba(255,255,255,0.08); }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 64rem) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 48rem) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+    .label-xs {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal-mint);
+    }
+    .label-sm {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--graphite-500);
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(2.5rem);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── NETWORK LINE PATTERN (shared utility) ── */
+    .grid-net {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        repeating-linear-gradient(90deg,
+          transparent 0,
+          transparent calc(8rem - 1px),
+          rgba(92, 219, 211, 0.06) calc(8rem - 1px),
+          rgba(92, 219, 211, 0.06) 8rem),
+        repeating-linear-gradient(0deg,
+          transparent 0,
+          transparent calc(8rem - 1px),
+          rgba(92, 219, 211, 0.04) calc(8rem - 1px),
+          rgba(92, 219, 211, 0.04) 8rem);
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+      z-index: 0;
+    }
+
+    /* Flowing connection lines — thin teal segments that sweep across */
+    .data-node {
+      position: absolute;
+      width: 6rem;
+      height: 0.0625rem;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(92, 219, 211, 0.7) 50%,
+        transparent 100%);
+      pointer-events: none;
+      opacity: 0;
+      transform-origin: left center;
+      animation: dataLineSweep 8s ease-in-out infinite;
+      z-index: 0;
+      filter: drop-shadow(0 0 0.375rem rgba(92,219,211,0.4));
+    }
+    .data-node.vertical {
+      width: 0.0625rem;
+      height: 6rem;
+      background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(92, 219, 211, 0.7) 50%,
+        transparent 100%);
+    }
+    .data-node.diagonal { transform: rotate(35deg); }
+    .data-node.diagonal-rev { transform: rotate(-35deg); }
+    @keyframes dataLineSweep {
+      0%   { opacity: 0; clip-path: inset(0 100% 0 0); }
+      30%  { opacity: 1; clip-path: inset(0 0 0 0); }
+      70%  { opacity: 1; clip-path: inset(0 0 0 0); }
+      100% { opacity: 0; clip-path: inset(0 0 0 100%); }
+    }
+
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 4.5rem 0 5rem;
+      background: var(--color-teal-900);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -8rem;
+      width: 42rem;
+      height: 42rem;
+      transform: translateY(-50%);
+      background: radial-gradient(circle, rgba(92,219,211,0.14) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero > .container {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .hero-content { position: relative; z-index: 2; flex: 1 1 26rem; max-width: 34rem; }
+    .hero-headline {
+      font-size: clamp(2rem, 3.6vw, 2.875rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--color-white);
+      font-family: var(--font-family);
+      margin-bottom: 1.5rem;
+    }
+    .hero-headline span { color: var(--color-mint); }
+    .hero-sub {
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.72);
+      font-family: var(--font-family);
+      max-width: 32rem;
+      margin-bottom: 1.125rem;
+    }
+    .hero-sub:last-of-type { margin-bottom: 2.25rem; }
+    .hero-sub strong { color: var(--color-white); font-weight: 600; }
+    .hero-link {
+      color: var(--color-mint);
+      text-decoration: underline;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .hero-link:hover { color: var(--color-white); }
+    .hero-product {
+      position: relative;
+      flex: 1 1 22rem;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-product img {
+      width: 100%;
+      max-width: 30rem;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 1.5rem 3rem rgba(0,0,0,0.5));
+    }
+
+    /* ── CTA BUTTONS ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--color-teal);
+      color: #fff;
+      border: none;
+      height: 2.75rem;
+      padding: 0 1.5rem;
+      border-radius: var(--radius);
+      font-family: var(--font-family);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.14s;
+    }
+    .btn-primary:hover { background: var(--color-teal-600); }
+    .btn-primary svg { transition: transform 0.2s; }
+    .btn-primary:hover svg { transform: translateX(0.2rem); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--color-teal);
+      border: 0.125rem solid var(--color-teal);
+      height: 2.75rem;
+      padding: 0 1.5rem;
+      border-radius: var(--radius);
+      font-family: var(--font-family);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.14s;
+    }
+    .btn-outline:hover { background: var(--color-teal-50); }
+    .section--dark .btn-outline { color: var(--color-white); border-color: rgba(255,255,255,0.4); }
+    .section--dark .btn-outline:hover { background: rgba(255,255,255,0.08); }
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── SECTION DIVIDER (hidden – we use plain white/paper section backgrounds instead) ── */
+    .section-divider {
+      display: none;
+    }
+
+    /* ── ZWEI SYSTEME (system comparison) ── */
+    .zwei-systeme { background: var(--color-paper); padding: 4rem 0; }
+    .systems-header { text-align: center; max-width: 44rem; margin: 0 auto 3rem; }
+    .systems-title {
+      font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      color: var(--color-digital-black);
+      font-family: var(--font-family);
+      margin-bottom: 1rem;
+    }
+    .systems-title-line { display: block; }
+    .systems-title-accent { color: var(--color-teal); }
+    .systems-sub {
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--color-graphite-700);
+      font-family: var(--font-family);
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    .systems-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+
+    .sys-card {
+      position: relative;
+      background: var(--color-white);
+      border: 0.0625rem solid var(--color-graphite-200);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: box-shadow 0.18s, border-color 0.18s;
+    }
+    .sys-card:hover { box-shadow: var(--shadow-hover); border-color: var(--color-graphite-300); }
+    .sys-card-bg, .sys-card-glow { display: none; }
+
+    .sys-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+    .sys-card-num { font-size: 0.875rem; font-weight: 600; letter-spacing: 0.1em; color: var(--color-graphite-400); font-family: var(--font-family); }
+    .sys-card-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.75rem; border-radius: var(--radius-pill);
+      font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--color-teal); background: rgba(1,82,83,0.08); font-family: var(--font-family);
+    }
+    .sys-card-dot { width: 0.375rem; height: 0.375rem; border-radius: 50%; background: var(--color-teal); }
+
+    .sys-card-product { display: flex; align-items: center; justify-content: center; height: 11rem; margin: 0.25rem 0 1.25rem; }
+    .sys-card-product::before { display: none; }
+    .sys-card-product img {
+      max-height: 10.5rem; max-width: 65%; object-fit: contain;
+      filter: drop-shadow(0 0.75rem 1.25rem rgba(0,0,0,0.12));
+      transition: transform 0.35s;
+    }
+    .sys-card:hover .sys-card-product img { transform: translateY(-0.25rem) scale(1.02); }
+
+    .sys-card-body { position: relative; }
+    .sys-card-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-graphite-600); margin-bottom: 0.5rem; font-family: var(--font-family); }
+    .sys-card-title { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: var(--color-digital-black); margin-bottom: 0.625rem; font-family: var(--font-family); }
+    .sys-card-lede { font-size: 0.9375rem; line-height: 1.55; color: var(--color-graphite-700); margin-bottom: 1.5rem; font-family: var(--font-family); }
+
+    .sys-card-stat {
+      display: flex; align-items: center; gap: 1rem; padding: 1rem 0;
+      border-top: 0.0625rem solid var(--color-graphite-200);
+      border-bottom: 0.0625rem solid var(--color-graphite-200);
+      margin-bottom: 1.5rem;
+    }
+    .sys-card-stat-val { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--color-teal); font-family: var(--font-family); min-width: 3.5rem; }
+    .sys-card-stat-meta { display: flex; flex-direction: column; gap: 0.125rem; }
+    .sys-card-stat-lbl { font-size: 0.9375rem; font-weight: 700; color: var(--color-digital-black); font-family: var(--font-family); }
+    .sys-card-stat-desc { font-size: 0.8125rem; color: var(--color-graphite-600); line-height: 1.4; font-family: var(--font-family); }
+
+    .sys-card-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; margin-bottom: 1.75rem; }
+    .sys-feat { display: flex; align-items: flex-start; gap: 0.625rem; }
+    .sys-feat-ic {
+      width: 1.75rem; height: 1.75rem; flex-shrink: 0; border-radius: var(--radius);
+      background: rgba(1,82,83,0.08); color: var(--color-teal);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .sys-feat span { display: block; line-height: 1.35; }
+    .sys-feat-l { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-graphite-500); margin-bottom: 0.125rem; font-family: var(--font-family); }
+    .sys-feat-v { font-size: 0.8125rem; font-weight: 600; color: var(--color-graphite-800); font-family: var(--font-family); }
+
+    .sys-card-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--color-teal); text-decoration: none;
+      font-size: 0.9375rem; font-weight: 600; font-family: var(--font-family);
+    }
+    .sys-card-cta:hover { color: var(--color-teal-600); text-decoration: underline; }
+    .sys-card-cta svg { transition: transform 0.2s; }
+    .sys-card-cta:hover svg { transform: translateX(0.2rem); }
+
+    @media (max-width: 960px) {
+      .systems-grid { grid-template-columns: 1fr; }
+      .sys-card { padding: 1.5rem; }
+      .sys-card-feat { grid-template-columns: 1fr; }
+    }
+
+    /* ── VS COMPARISON ── */
+    .vs { margin-top: 0.5rem; }
+    .vs-divider { color: var(--color-teal); font-style: italic; font-weight: 400; padding: 0 0.4rem; }
+    .section-title { color: var(--color-digital-black); font-family: var(--font-family); }
+    .section-title .accent { color: var(--color-teal); }
+    .section-subtitle { font-size: 1.0625rem; line-height: 1.6; color: var(--color-graphite-700); max-width: 36rem; margin: 0 auto; font-family: var(--font-family); }
+
+    .vs-headers { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.25rem; align-items: center; margin-bottom: 1.75rem; }
+    .vs-header {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.25rem 1.5rem; border-radius: var(--radius-lg);
+      border: 0.0625rem solid var(--color-graphite-200); background: var(--color-white);
+    }
+    .vs-header-bus, .vs-header-ip { color: var(--color-teal); }
+    .vs-header-icon {
+      width: 2.75rem; height: 2.75rem; flex-shrink: 0; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(1,82,83,0.08); color: var(--color-teal);
+    }
+    .vs-header-tag { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-graphite-500); margin-bottom: 0.125rem; font-family: var(--font-family); }
+    .vs-header-name { font-size: 1.125rem; font-weight: 700; color: var(--color-digital-black); letter-spacing: -0.01em; margin-bottom: 0.125rem; font-family: var(--font-family); }
+    .vs-header-sub { font-size: 0.8125rem; color: var(--color-graphite-600); font-family: var(--font-family); }
+    .vs-vs-badge {
+      width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--color-teal-900);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: var(--color-mint); letter-spacing: 0.08em; font-family: var(--font-family);
+    }
+    .vs-vs-badge::before { display: none; }
+
+    .vs-rows { display: flex; flex-direction: column; gap: 0.75rem; }
+    .vs-row {
+      display: grid; grid-template-columns: 15rem 1fr 1fr; gap: 1rem; align-items: stretch;
+      padding: 0.75rem; border-radius: var(--radius-lg);
+      background: var(--color-white); border: 0.0625rem solid var(--color-graphite-200);
+      transition: box-shadow 0.18s, border-color 0.18s;
+    }
+    .vs-row:hover { box-shadow: var(--shadow-card); border-color: var(--color-graphite-300); }
+    .vs-row-merkmal { display: flex; align-items: center; gap: 0.875rem; padding: 0 0.5rem 0 0.75rem; }
+    .vs-row-num {
+      width: 2.25rem; height: 2.25rem; flex-shrink: 0; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(1,82,83,0.08); color: var(--color-teal);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; font-family: var(--font-family);
+    }
+    .vs-row-label { font-size: 0.9375rem; font-weight: 700; color: var(--color-digital-black); letter-spacing: -0.005em; margin-bottom: 0.125rem; font-family: var(--font-family); }
+    .vs-row-q { font-size: 0.75rem; color: var(--color-graphite-600); font-weight: 400; line-height: 1.3; font-family: var(--font-family); }
+
+    .vs-row-card {
+      position: relative; display: flex; gap: 0.875rem; padding: 1rem;
+      border-radius: var(--radius); background: var(--color-paper);
+      border: 0.0625rem solid var(--color-graphite-200);
+    }
+    .vs-row-card-bus, .vs-row-card-ip { border-left: 0.1875rem solid var(--color-teal); }
+
+    .vs-row-visual {
+      flex-shrink: 0; width: 4rem; height: 2.75rem; display: flex; align-items: center; justify-content: center;
+      padding: 0.25rem; border-radius: var(--radius); background: var(--color-white);
+      border: 0.0625rem solid var(--color-graphite-200);
+    }
+    .vs-row-visual svg { width: 100%; height: 100%; }
+    .vs-row-content { flex: 1; min-width: 0; }
+
+    .vs-row-pill {
+      display: inline-block; padding: 0.2rem 0.5rem; border-radius: var(--radius-pill);
+      font-size: 0.625rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 0.375rem; background: rgba(1,82,83,0.08); color: var(--color-teal); font-family: var(--font-family);
+    }
+    .vs-row-card p { font-size: 0.8125rem; line-height: 1.45; color: var(--color-graphite-800); margin: 0 0 0.375rem 0; font-family: var(--font-family); }
+    .vs-row-tip { font-size: 0.75rem; line-height: 1.3; color: var(--color-graphite-600); display: flex; gap: 0.3rem; font-family: var(--font-family); }
+    .vs-row-tip span { color: var(--color-teal); flex-shrink: 0; font-weight: 700; }
+
+    .vs-fazit {
+      display: flex; align-items: flex-start; gap: 1rem; margin-top: 1.75rem;
+      padding: 1.5rem 1.75rem; background: rgba(1,82,83,0.06);
+      border: 0.0625rem solid rgba(1,82,83,0.18); border-radius: var(--radius-lg);
+    }
+    .vs-fazit::before { display: none; }
+    .vs-fazit-icon {
+      width: 2.25rem; height: 2.25rem; flex-shrink: 0; border-radius: var(--radius);
+      background: var(--color-white); border: 0.0625rem solid rgba(1,82,83,0.25);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .vs-fazit h4 { font-size: 1rem; font-weight: 700; color: var(--color-digital-black); margin-bottom: 0.375rem; letter-spacing: -0.005em; font-family: var(--font-family); }
+    .vs-fazit p { font-size: 0.875rem; line-height: 1.6; color: var(--color-graphite-700); margin: 0; font-family: var(--font-family); }
+    .vs-fazit em { color: var(--color-teal); font-style: normal; font-weight: 700; }
+
+    @media (max-width: 960px) {
+      .vs-headers { grid-template-columns: 1fr; }
+      .vs-vs-badge { margin: 0 auto; }
+      .vs-row { grid-template-columns: 1fr; gap: 0.75rem; padding: 1rem; }
+      .vs-row-merkmal { padding: 0; margin-bottom: 0.25rem; }
+      .vs-row-card { padding: 1rem; }
+      .vs-row-visual { width: 3.5rem; height: 2.5rem; }
+    }
+
+    /* ── DETAILED COMPARISON TABLE ── */
+    .detail-comparison { background: var(--color-white); padding: 4rem 0; }
+    .detail-table-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      overflow-x: auto;
+      border: 0.0625rem solid var(--color-graphite-200);
+    }
+    .detail-table { width: 100%; border-collapse: collapse; min-width: 42rem; }
+    .detail-table thead th {
+      padding: 1rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-white);
+      background: var(--color-teal);
+      text-align: left;
+      font-family: var(--font-family);
+      border-right: 0.0625rem solid rgba(255,255,255,0.14);
+    }
+    .detail-table thead th:last-child { border-right: none; }
+    .detail-table thead th:first-child {
+      background: var(--color-teal-900);
+      font-size: 0.6875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-mint);
+      font-weight: 700;
+    }
+    .detail-table tbody td {
+      padding: 0.875rem 1rem;
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: var(--color-graphite-800);
+      font-family: var(--font-family);
+      border-bottom: 0.0625rem solid var(--color-graphite-100);
+      border-right: 0.0625rem solid var(--color-graphite-100);
+    }
+    .detail-table tbody tr:last-child td { border-bottom: none; }
+    .detail-table tbody td:last-child { border-right: none; }
+    .detail-table tbody td:first-child {
+      font-weight: 700;
+      color: var(--color-digital-black);
+      background: rgba(1,82,83,0.05);
+      font-size: 0.8125rem;
+      white-space: nowrap;
+    }
+    .detail-table tbody tr:hover td { background: var(--color-paper); }
+    .detail-table tbody tr:hover td:first-child { background: rgba(1,82,83,0.08); }
+
+    /* ── PRODUCT SELECTION (WELCHES SYSTEM) ── */
+    .product-selection { background: var(--color-paper); padding: 4rem 0; }
+    .product-selection .section-title { color: var(--color-digital-black); }
+    .product-selection .section-title .accent { color: var(--color-teal); }
+    .product-selection .section-subtitle { color: var(--color-graphite-700); }
+
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
+    .product-card {
+      background: var(--color-white);
+      border: 0.0625rem solid var(--color-graphite-200);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: box-shadow 0.18s, border-color 0.18s;
+    }
+    .product-card:hover { box-shadow: var(--shadow-hover); border-color: var(--color-graphite-300); }
+    .product-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .product-card-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: var(--radius-lg);
+      background: rgba(1,82,83,0.08); display: flex; align-items: center; justify-content: center;
+    }
+    .product-card-icon svg { color: var(--color-teal); }
+    .product-card h4 { font-size: 1.125rem; font-weight: 700; color: var(--color-digital-black); font-family: var(--font-family); }
+    .product-card-features { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+    .product-card-features li {
+      display: flex; align-items: flex-start; gap: 0.625rem;
+      font-size: 0.8125rem; line-height: 1.5; color: var(--color-graphite-700); font-family: var(--font-family);
+    }
+    .product-card-features li svg { flex-shrink: 0; margin-top: 0.125rem; color: var(--color-green); }
+
+    /* ── SCENARIO BLOCKS ── */
+    .scenario-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .scenario-block {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 0.0625rem solid var(--color-graphite-200);
+      transition: box-shadow 0.18s, border-color 0.18s;
+    }
+    .scenario-block:hover { box-shadow: var(--shadow-hover); border-color: var(--color-graphite-300); }
+    .scenario-block-img { width: 100%; height: 14rem; object-fit: cover; display: block; }
+    .scenario-block-content { padding: 1.75rem; }
+    .scenario-block h3 {
+      font-size: 1.25rem; font-weight: 700; color: var(--color-digital-black);
+      margin-bottom: 0.75rem; line-height: 1.3; font-family: var(--font-family);
+    }
+    .scenario-block p { font-size: 0.9375rem; line-height: 1.6; color: var(--color-graphite-700); margin-bottom: 1.25rem; font-family: var(--font-family); }
+    .scenario-block .btn-primary { height: 2.5rem; padding: 0 1.25rem; font-size: 0.875rem; }
+    .scenario-disclaimer {
+      font-size: 0.75rem !important;
+      line-height: 1.55 !important;
+      color: var(--color-graphite-600) !important;
+      font-style: italic;
+      padding-top: 1rem;
+      margin-top: 0.5rem !important;
+      margin-bottom: 1.25rem !important;
+      border-top: 0.0625rem solid var(--color-graphite-200);
+      font-family: var(--font-family);
+    }
+
+    /* ── APPLE-STYLE TOPOLOGY ── */
+    .topo-apple {
+      position: relative;
+      padding: 6rem 0 6.5rem;
+      overflow: hidden;
+      background: var(--color-teal-900);
+    }
+    .topo-apple::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(0,0,0,0.4) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .topo-apple-bg-glow {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      width: 60rem;
+      height: 60rem;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(92,219,211,0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+      transition: background 0.8s ease;
+    }
+    .topo-apple .container { position: relative; z-index: 1; }
+    .topo-apple-header { text-align: center; margin-bottom: 3rem; }
+    .topo-apple-title {
+      font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--color-white);
+      font-family: var(--font-family);
+      margin-bottom: 1.25rem;
+    }
+    .topo-apple-title-line { display: block; }
+    .topo-apple-title-accent {
+      background: linear-gradient(135deg, #5CDBD3, #015253);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .topo-apple-sub {
+      font-size: 1.125rem;
+      color: rgba(255,255,255,0.72);
+      font-family: var(--font-family);
+      max-width: 34rem;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* Toggle (segmented control) */
+    .topo-toggle {
+      position: relative;
+      display: inline-flex;
+      margin: 0 auto 3.5rem;
+      background: rgba(255,255,255,0.04);
+      border: 0.0625rem solid rgba(255,255,255,0.08);
+      border-radius: 5rem;
+      padding: 0.375rem;
+      backdrop-filter: blur(1rem);
+      max-width: calc(100% - 2rem);
+      box-sizing: border-box;
+    }
+    .topo-toggle-pill {
+      position: absolute;
+      top: 0.375rem;
+      left: 0;
+      height: calc(100% - 0.75rem);
+      width: 0;
+      background: linear-gradient(135deg, rgba(1,82,83,0.95), rgba(1,62,62,0.95));
+      border: 0.0625rem solid rgba(92,219,211,0.35);
+      border-radius: 5rem;
+      transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1), width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+      z-index: 0;
+      box-shadow: 0 0.5rem 1.5rem rgba(1,82,83,0.3);
+      pointer-events: none;
+    }
+    .topo-toggle-btn {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-family);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.4s;
+      white-space: nowrap;
+    }
+    .topo-toggle-btn.is-active { color: var(--white); }
+    .topo-toggle-num {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      opacity: 0.5;
+    }
+    .topo-toggle-btn.is-active .topo-toggle-num { color: var(--teal-mint); opacity: 1; }
+
+    /* Stage */
+    .topo-stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      min-height: 30rem;
+    }
+    .topo-text {
+      position: relative;
+    }
+    .topo-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal-mint);
+      font-family: var(--font-family);
+      margin-bottom: 1rem;
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .topo-headline {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--color-white);
+      font-family: var(--font-family);
+      margin-bottom: 1.5rem;
+    }
+    .topo-headline span { display: inline-block; transition: opacity 0.5s, transform 0.5s; }
+    .topo-headline-accent {
+      background: linear-gradient(135deg, #5CDBD3, #015253);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0 0.25em;
+    }
+    .topo-body {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.72);
+      font-family: var(--font-family);
+      margin-bottom: 2.25rem;
+      max-width: 28rem;
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .topo-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 28rem;
+    }
+    .topo-stat { transition: opacity 0.5s, transform 0.5s; }
+    .topo-stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      font-family: var(--font-family);
+      background: linear-gradient(135deg, #5CDBD3, #015253);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .topo-stat-unit {
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+    .topo-stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-family);
+      line-height: 1.4;
+    }
+
+    /* Fade-out / morph state for text content */
+    .topo-text.is-morphing .topo-eyebrow,
+    .topo-text.is-morphing .topo-headline span,
+    .topo-text.is-morphing .topo-body,
+    .topo-text.is-morphing .topo-stat {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+
+    /* SVG visualization */
+    .topo-viz {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .topo-svg {
+      width: 100%;
+      max-width: 32rem;
+      aspect-ratio: 1;
+      filter: drop-shadow(0 1.5rem 3rem rgba(92,219,211,0.1));
+    }
+    .topo-viz-bus,
+    .topo-viz-ip {
+      transition: opacity 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .topo-path {
+      stroke-dasharray: 800;
+      stroke-dashoffset: 800;
+      animation: topoDraw 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    }
+    @keyframes topoDraw {
+      to { stroke-dashoffset: 0; }
+    }
+    .topo-node {
+      opacity: 0;
+      animation: topoNodeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .topo-node:nth-child(2) { animation-delay: 0.6s; }
+    .topo-node:nth-child(3) { animation-delay: 0.75s; }
+    .topo-node:nth-child(4) { animation-delay: 0.9s; }
+    .topo-node:nth-child(5) { animation-delay: 1.05s; }
+    .topo-node:nth-child(6) { animation-delay: 1.2s; }
+    .topo-node:nth-child(7) { animation-delay: 1.35s; }
+    @keyframes topoNodeIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .topo-node { transform-origin: center; transform-box: fill-box; }
+
+    @media (max-width: 1024px) {
+      .topo-stage { grid-template-columns: 1fr; gap: 3rem; }
+      .topo-text { text-align: center; }
+      .topo-body { margin-left: auto; margin-right: auto; }
+      .topo-stats { margin-left: auto; margin-right: auto; }
+    }
+    @media (max-width: 900px) {
+      .topo-toggle {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border-radius: 1rem;
+        gap: 0.375rem;
+        width: calc(100% - 2rem);
+        max-width: 32rem;
+      }
+      .topo-toggle-btn {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.75rem 0.5rem;
+        text-align: center;
+        font-size: 0.8125rem;
+        border-radius: 0.625rem;
+        background: rgba(255,255,255,0.02);
+        border: 0.0625rem solid rgba(255,255,255,0.06);
+      }
+      .topo-toggle-btn.is-active {
+        background: linear-gradient(135deg, rgba(1,82,83,0.4), rgba(1,62,62,0.4));
+        border-color: rgba(92,219,211,0.4);
+      }
+      .topo-toggle-pill { display: none; }
+      .topo-toggle-num { font-size: 0.6875rem; }
+      .topo-toggle-label { font-size: 0.75rem; line-height: 1.2; }
+    }
+    @media (max-width: 640px) {
+      .topo-stat-value { font-size: 2.25rem; }
+      .topo-stats { gap: 1rem; }
+    }
+
+    /* ── LEGACY TOPOLOGY SECTION (unused, kept for compatibility) ── */
+    .topology-section {
+      padding: 6rem 0;
+      background: rgba(255,255,255,0.02);
+    }
+    .topology-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .topology-card {
+      background: rgba(255,255,255,0.03);
+      border: 0.0625rem solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    .topology-card-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 0.0625rem solid rgba(255,255,255,0.08);
+    }
+    .topology-card-content {
+      padding: 2rem;
+    }
+    .topology-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.375rem;
+    }
+    .topology-card .card-tag {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal-mint);
+      margin-bottom: 1rem;
+    }
+    .topology-card p {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--white-50);
+    }
+
+    /* ── FAQ ── */
+    /* ── FAQ — exact Metzler design-system component ── */
+    .faq-section { background: var(--color-white); padding: 4rem 0; }
+    .faq-stage { border-top: 0.0625rem solid var(--color-graphite-200); padding: 2.5rem 0 0; display: flex; flex-direction: column; align-items: center; }
+    .faq-header { text-align: center; margin-bottom: 2.5rem; }
+    .faq-label { font-size: 0.75rem; font-weight: 700; line-height: 1.4; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-teal); margin: 0 0 1.25rem; }
+    .faq-heading { font-size: 2.875rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--color-digital-black); font-family: var(--font-family); margin: 0; }
+    .faq-list { list-style: none; margin: 0; padding: 0; width: 100%; max-width: 54rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .faq-item { position: relative; background: var(--color-white); border: 0.0625rem solid var(--color-graphite-200); border-radius: 0.5rem; overflow: hidden; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+    .faq-item:hover { border-color: var(--color-teal); }
+    .faq-item.is-open { border-color: var(--color-teal); background: linear-gradient(180deg, var(--color-white) 0%, var(--color-paper) 100%); }
+    .faq-item.is-open::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 0.25rem; background: var(--color-teal); }
+    .faq-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.5rem; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--font-family); }
+    .faq-left { display: flex; align-items: center; gap: 1.25rem; min-width: 0; }
+    .faq-q { font-size: 1.125rem; font-weight: 700; color: var(--color-digital-black); line-height: 1.3; letter-spacing: -0.01em; margin: 0; font-family: var(--font-family); }
+    .faq-btn:hover .faq-q { color: var(--color-teal); }
+    .faq-icon { width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center; color: var(--color-teal); transition: transform 0.35s cubic-bezier(.22,1,.36,1); flex-shrink: 0; }
+    .faq-item.is-open .faq-icon { transform: rotate(180deg); }
+    .faq-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 400ms cubic-bezier(.22,1,.36,1); }
+    .faq-body.is-open { grid-template-rows: 1fr; }
+    .faq-body-inner { overflow: hidden; min-height: 0; }
+    .faq-answer { font-size: 1rem; line-height: 1.7; color: var(--color-graphite-700); font-family: var(--font-family); padding: 0 1.5rem 1.75rem; margin: 0; max-width: 42rem; }
+    @media (max-width: 62.5rem) { .faq-heading { font-size: 1.875rem; } }
+    @media (max-width: 35rem) {
+      .faq-heading { font-size: 1.5rem; }
+      .faq-btn { padding: 1.25rem 1.125rem; }
+      .faq-left { gap: 0.875rem; }
+      .faq-answer { padding: 0 1.125rem 1.5rem; }
+    }
+
+    /* ── CTA BANNER — deliberate dark band per design-system §19 ── */
+    .cta-banner {
+      padding: 4rem 0;
+      background: var(--color-teal-900);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner h2 {
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      font-weight: 700;
+      color: var(--color-white);
+      font-family: var(--font-family);
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .cta-banner p {
+      font-size: 1.0625rem;
+      color: rgba(255,255,255,0.72);
+      font-family: var(--font-family);
+      margin-bottom: 1.75rem;
+      position: relative;
+    }
+    .cta-banner .btn-group { justify-content: center; position: relative; }
+
+    /* ── PRODUCT SHOWCASE ── */
+    .product-showcase { background: var(--color-paper); padding: 4rem 0; }
+    .product-showcase-header { text-align: center; margin-bottom: 3rem; }
+    .showcase-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; }
+    .showcase-item {
+      background: var(--color-white);
+      border: 0.0625rem solid var(--color-graphite-200);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      transition: box-shadow 0.18s, border-color 0.18s;
+    }
+    .showcase-item:hover { box-shadow: var(--shadow-hover); border-color: var(--color-graphite-300); }
+    .showcase-item img {
+      width: 100%;
+      max-height: 12rem;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0.5rem 1rem rgba(0,0,0,0.1));
+      transition: transform 0.3s;
+    }
+    .showcase-item:hover img { transform: scale(1.04); }
+    .showcase-item h4 { font-size: 0.9375rem; font-weight: 700; color: var(--color-digital-black); font-family: var(--font-family); margin-bottom: 0.25rem; }
+    .showcase-item .showcase-desc { font-size: 0.75rem; color: var(--color-graphite-600); font-family: var(--font-family); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .scenario-blocks { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 2.5rem 0 2.5rem; }
+      .hero > .container { flex-direction: column; }
+      .hero-product { width: 100%; max-width: 22rem; margin: 0 auto; order: -1; }
+      .hero-content { max-width: 100%; }
+      .detail-table { font-size: 0.75rem; }
+      .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── SITE HEADER (Metzler design system §7, simplified single-row) ── */
+    .site-header { background: var(--color-white); border-bottom: 0.0625rem solid var(--color-graphite-200); position: relative; z-index: 100; }
+    .header-inner { height: 4rem; display: flex; align-items: center; gap: 1.25rem; }
+    .header-logo { display: flex; align-items: center; gap: 0.625rem; text-decoration: none; flex-shrink: 0; }
+    .header-logo span { font-size: 1.0625rem; font-weight: 800; letter-spacing: 0.14em; color: var(--color-digital-black); font-family: var(--font-family); }
+    .header-cat-btn {
+      background: var(--color-teal); color: #fff; border: none; border-radius: var(--radius);
+      height: 2.5rem; padding: 0 1.125rem; font-size: 0.9375rem; font-weight: 500;
+      font-family: var(--font-family); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;
+    }
+    .header-search { flex: 1; height: 2.5rem; background: var(--color-paper); border: 0.0625rem solid var(--color-graphite-300); border-radius: var(--radius); display: flex; align-items: center; padding: 0 0.875rem; gap: 0.625rem; max-width: 30rem; }
+    .header-search input { flex: 1; border: none; background: none; font-size: 0.9375rem; font-family: var(--font-family); color: var(--color-digital-black); outline: none; }
+    .header-icons { display: flex; gap: 0.375rem; margin-left: auto; flex-shrink: 0; }
+    .header-icon-btn { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--color-digital-black); text-decoration: none; transition: background 0.14s; }
+    .header-icon-btn:hover { background: var(--color-paper); }
+    @media (max-width: 48rem) {
+      .header-inner { height: 3.125rem; gap: 0.75rem; }
+      .header-cat-btn span, .header-search { display: none; }
+    }
+
+    /* ── SITE FOOTER (Metzler design system §14, simplified 4-column) ── */
+    .site-footer { background: var(--color-teal-700); color: var(--color-white); padding: 3.5rem 0 2rem; margin-top: 0; font-family: var(--font-family); }
+    .footer-logo { display: inline-flex; align-items: center; gap: 0.625rem; text-decoration: none; margin-bottom: 1.25rem; }
+    .footer-logo span { font-size: 1rem; font-weight: 800; letter-spacing: 0.14em; color: var(--color-white); font-family: var(--font-family); }
+    .footer-tagline { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.55; margin: 0 0 0.5rem; }
+    .footer-mint-link { color: var(--color-mint); text-decoration: none; font-size: 0.9375rem; transition: opacity 0.14s; }
+    .footer-mint-link:hover { opacity: 0.8; }
+    .footer-grid { display: grid; grid-template-columns: 1.8fr 1.4fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.5rem; border-bottom: 0.0625rem solid rgba(255,255,255,0.1); margin-bottom: 1.5rem; }
+    .footer-col-heading { font-size: 1rem; font-weight: 700; color: var(--color-white); margin: 0 0 1.25rem; }
+    .footer-contact-block { display: flex; flex-direction: column; gap: 0.1875rem; margin-bottom: 1.25rem; }
+    .footer-contact-label { font-size: 0.9375rem; font-weight: 700; color: var(--color-white); margin: 0; }
+    .footer-contact-hours { font-size: 0.875rem; color: rgba(255,255,255,0.5); margin: 0; }
+    .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+    .footer-links a { font-size: 0.9375rem; color: rgba(255,255,255,0.72); text-decoration: none; transition: color 0.14s; }
+    .footer-links a:hover { color: var(--color-mint); }
+    .footer-legal { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.8125rem; color: rgba(255,255,255,0.45); }
+    .footer-legal-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-legal a, .footer-legal-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.8125rem; transition: color 0.14s; }
+    .footer-legal a:hover, .footer-legal-links a:hover { color: var(--color-white); }
+    @media (max-width: 64rem) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+    @media (max-width: 48rem) {
+      .site-footer { padding: 2.5rem 0 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-legal { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .footer-legal-links { gap: 1rem; }
+    }
+
+    /* ── TEMP REVIEW MODE: only #topologie visible — remove this block to restore the full page ── */
+    .site-header, .hero, .zwei-systeme, .detail-comparison, .product-showcase,
+    .product-selection, .faq-section, .cta-banner, .site-footer,
+    .section-divider {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="https://edelstahl-tuerklingel.de" class="header-logo" aria-label="Metzler">
+        <svg width="32" height="32" viewBox="0 0 184.3 184.3"><rect width="184.3" height="184.3" rx="5.75" fill="#D42924"/><path fill="#fff" d="M70.19,34.81l19.04,32.98-9.58,16.57-28.59-49.55h19.13ZM70.28,108.58h0l-23.45-40.64v85.89h-16.57V34.81h16.57l33.02,57.21L123.92,15.65h19.13l-63.22,109.52-9.58-16.57.02-.02ZM153.14,153.83h-16.57v-85.87l-33,57.14h-19.13l52.11-90.28h16.57v119.02l.02-.02Z"/></svg>
+        <span>METZLER</span>
+      </a>
+      <button class="header-cat-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <span>Alle Kategorien</span>
+      </button>
+      <div class="header-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A1A1A1" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" placeholder="Suchen &ndash; T&uuml;rklingel, Briefkasten, Hausnummer &hellip;">
+      </div>
+      <div class="header-icons">
+        <a href="#" class="header-icon-btn" aria-label="Konto"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></a>
+        <a href="#" class="header-icon-btn" aria-label="Warenkorb"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero section--dark">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-headline reveal">
+          Metzler Sprechanlagen &ndash; <span>modern, flexibel und f&uuml;r jede Installation gemacht.</span>
+        </h1>
+        <p class="hero-sub reveal reveal-delay-1">
+          Egal ob <strong>Neubau, Sanierung oder Modernisierung</strong>:<br>
+          Mit Metzler entscheiden Sie, wie Sie installieren &ndash; nicht ob es passt.
+        </p>
+        <p class="hero-sub reveal reveal-delay-2">
+          W&auml;hlen Sie zwischen <a class="hero-link" href="#systeme">2-Draht BUS Serie (f&uuml;r Bestandsleitungen)</a> oder <a class="hero-link" href="#systeme">IP-Serie (LAN/PoE &amp; 2-Draht IP)</a> &ndash; beide mit modernster Video- und App-Technologie.
+        </p>
+        <div class="btn-group reveal reveal-delay-3">
+          <a href="#systeme" class="btn-primary">
+            Systeme entdecken
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#vergleich" class="btn-outline">Zum Vergleich</a>
+        </div>
+      </div>
+      <div class="hero-product reveal reveal-delay-2">
+        <img src="./sprechanlagen-images/metzler-video-tuersprechanlagen-hero.webp" alt="Metzler Video-Tuersprechanlagen 2-Draht BUS und IP-Serie">
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════ APPLE-STYLE TOPOLOGY ═══════════ -->
+  <section class="topo-apple" id="topologie">
+    <div class="topo-apple-bg-glow" data-glow></div>
+    <div class="grid-net"></div>
+    <div class="data-node" style="top:12%;left:6%;animation-delay:0.5s;"></div>
+    <div class="data-node vertical" style="top:20%;left:90%;animation-delay:2.5s;"></div>
+    <div class="data-node diagonal-rev" style="top:78%;left:5%;animation-delay:1.5s;"></div>
+    <div class="data-node" style="top:88%;left:75%;animation-delay:3.5s;"></div>
+    <div class="container">
+
+      <div class="topo-apple-header">
+        <p class="label-xs reveal" style="margin-bottom:1.5rem;">Verkabelung verstehen</p>
+        <h2 class="topo-apple-title reveal reveal-delay-1">
+          <span class="topo-apple-title-line">Drei Wege.</span>
+          <span class="topo-apple-title-line topo-apple-title-accent">Ein Ziel.</span>
+        </h2>
+        <p class="topo-apple-sub reveal reveal-delay-2">W&auml;hlen Sie Ihr System &mdash; und sehen Sie, wie es funktioniert.</p>
+      </div>
+
+      <!-- Apple-style segmented control -->
+      <div class="topo-toggle reveal reveal-delay-3" role="tablist">
+        <div class="topo-toggle-pill" data-pill></div>
+        <button class="topo-toggle-btn is-active" data-topo="bus" role="tab" aria-selected="true">
+          <span class="topo-toggle-num">01</span>
+          <span class="topo-toggle-label">2-Draht BUS</span>
+        </button>
+        <button class="topo-toggle-btn" data-topo="ip" role="tab" aria-selected="false">
+          <span class="topo-toggle-num">02</span>
+          <span class="topo-toggle-label">IP-Serie (LAN/PoE)</span>
+        </button>
+        <button class="topo-toggle-btn" data-topo="ip2" role="tab" aria-selected="false">
+          <span class="topo-toggle-num">03</span>
+          <span class="topo-toggle-label">IP-Serie (2-Draht IP)</span>
+        </button>
+      </div>
+
+      <!-- Animated content stage -->
+      <div class="topo-stage">
+
+        <!-- LEFT: Editorial text -->
+        <div class="topo-text">
+          <div class="topo-eyebrow" data-content="eyebrow">Baum-Topologie</div>
+          <h3 class="topo-headline" data-content="headline">
+            <span data-content="headline-pre">Ger&auml;t</span>
+            <span class="topo-headline-accent" data-content="headline-mid">zu</span>
+            <span data-content="headline-post">Ger&auml;t.</span>
+          </h3>
+          <p class="topo-body" data-content="body">In bestehenden Geb&auml;uden m&uuml;ssen Sie oft mit eingeschr&auml;nkten Anschlussm&ouml;glichkeiten rechnen. Dank der M&ouml;glichkeit, Innenstationen &uuml;ber ein 2-adriges Kabel durchzuschleifen, sind Sie mit dem XDM10 f&uuml;r nahezu jedes Szenario ger&uuml;stet.</p>
+
+          <!-- Animated stats -->
+          <div class="topo-stats">
+            <div class="topo-stat">
+              <div class="topo-stat-value" data-content="stat1-val">2</div>
+              <div class="topo-stat-label" data-content="stat1-lbl">Adern</div>
+            </div>
+            <div class="topo-stat">
+              <div class="topo-stat-value" data-content="stat2-val">6</div>
+              <div class="topo-stat-label" data-content="stat2-lbl">Stationen<br>pro Verteiler</div>
+            </div>
+            <div class="topo-stat">
+              <div class="topo-stat-value" data-content="stat3-val">100<span class="topo-stat-unit">%</span></div>
+              <div class="topo-stat-label" data-content="stat3-lbl">Bestandsleitung<br>nutzbar</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Custom animated SVG visualization -->
+        <div class="topo-viz">
+          <svg class="topo-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="topoLineGrad" x1="0" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#5CDBD3"/>
+                <stop offset="100%" stop-color="#5CDBD3"/>
+              </linearGradient>
+              <radialGradient id="topoNodeGrad">
+                <stop offset="0%" stop-color="#5CDBD3" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#5CDBD3" stop-opacity="0.2"/>
+              </radialGradient>
+              <filter id="topoGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- ╭─ BUS Topology — exact scheme from metzler-de.github.io/2draht-bus/ ─╮ -->
+            <g class="topo-viz-bus" data-viz="bus">
+              <g transform="translate(56,21) scale(1.1)">
+                <!-- House silhouette -->
+                <path d="M 50 64 L 200 22 L 350 64 Z" fill="rgba(92,219,211,0.06)" stroke="rgba(92,219,211,0.55)" stroke-width="1.5" stroke-linejoin="round"/>
+                <line x1="60" y1="64" x2="60" y2="319" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="340" y1="64" x2="340" y2="319" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="60" y1="64" x2="340" y2="64" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="60" y1="149" x2="340" y2="149" stroke="rgba(92,219,211,0.55)" stroke-width="1.2"/>
+                <line x1="60" y1="234" x2="340" y2="234" stroke="rgba(92,219,211,0.55)" stroke-width="1.2"/>
+                <line x1="60" y1="319" x2="340" y2="319" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+
+                <!-- 2. OG -->
+                <text x="74" y="82" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">2. OG</text>
+                <rect x="76" y="84" width="70" height="46" rx="2" fill="rgba(92,219,211,0.06)" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="111" y1="84" x2="111" y2="130" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="76" y1="107" x2="146" y2="107" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+
+                <!-- 1. OG -->
+                <text x="74" y="167" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">1. OG</text>
+                <rect x="76" y="169" width="70" height="46" rx="2" fill="rgba(92,219,211,0.06)" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="111" y1="169" x2="111" y2="215" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="76" y1="192" x2="146" y2="192" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+
+                <!-- EG -->
+                <text x="74" y="252" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">EG</text>
+
+                <!-- Cables (drawn before devices) -->
+                <path class="topo-path" d="M 270 277 L 270 107" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 160 277 L 270 277" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 43 277 L 100 277" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+                <!-- Innenstation 3 (2. OG) -->
+                <g class="topo-node">
+                  <rect x="225" y="81" width="91" height="52" rx="8" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <rect x="234" y="91" width="72" height="32" rx="3" fill="rgba(92,219,211,0.16)" stroke="rgba(92,219,211,0.4)" stroke-width="0.6"/>
+                  <text x="270" y="110" fill="rgba(255,255,255,0.9)" font-size="9" font-weight="500" font-family="Inter, sans-serif" text-anchor="middle">Innenstation 3</text>
+                </g>
+
+                <!-- Innenstation 2 (1. OG) -->
+                <g class="topo-node">
+                  <rect x="225" y="166" width="91" height="52" rx="8" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <rect x="234" y="176" width="72" height="32" rx="3" fill="rgba(92,219,211,0.16)" stroke="rgba(92,219,211,0.4)" stroke-width="0.6"/>
+                  <text x="270" y="195" fill="rgba(255,255,255,0.9)" font-size="9" font-weight="500" font-family="Inter, sans-serif" text-anchor="middle">Innenstation 2</text>
+                </g>
+
+                <!-- Innenstation 1 (EG) -->
+                <g class="topo-node">
+                  <rect x="225" y="251" width="91" height="52" rx="8" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <rect x="234" y="261" width="72" height="32" rx="3" fill="rgba(92,219,211,0.16)" stroke="rgba(92,219,211,0.4)" stroke-width="0.6"/>
+                  <text x="270" y="280" fill="rgba(255,255,255,0.9)" font-size="9" font-weight="500" font-family="Inter, sans-serif" text-anchor="middle">Innenstation 1</text>
+                </g>
+
+                <!-- 2-Draht Verteiler -->
+                <g class="topo-node">
+                  <rect x="99" y="245" width="62" height="14" rx="3" fill="#0e1a1c"/>
+                  <text x="130" y="255" fill="rgba(255,255,255,0.82)" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">Verteiler</text>
+                  <rect x="100" y="262" width="60" height="30" rx="4" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="113" cy="277" r="2.4" fill="#5CDBD3"/>
+                  <circle cx="125" cy="277" r="2.4" fill="#5CDBD3"/>
+                  <circle cx="137" cy="277" r="2.4" fill="#5CDBD3"/>
+                  <circle cx="149" cy="277" r="2.4" fill="#5CDBD3"/>
+                </g>
+
+                <!-- Türstation -->
+                <g class="topo-node">
+                  <rect x="-13" y="226" width="71" height="15" rx="3" fill="#0e1a1c"/>
+                  <text x="22.5" y="237" fill="rgba(255,255,255,0.82)" font-size="11" font-family="Inter, sans-serif" text-anchor="middle">T&#252;rstation</text>
+                  <rect x="2" y="243" width="41" height="68" rx="6" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="22" cy="257" r="4" fill="none" stroke="#5CDBD3" stroke-width="1.4"/>
+                  <rect x="9" y="271" width="26" height="5" rx="1.4" fill="#5CDBD3"/>
+                  <rect x="9" y="282" width="26" height="5" rx="1.4" fill="#5CDBD3"/>
+                  <rect x="9" y="293" width="26" height="5" rx="1.4" fill="#5CDBD3"/>
+                </g>
+
+                <!-- Signal pulse -->
+                <circle class="topo-pulse" r="4" fill="#5CDBD3" filter="url(#topoGlow)">
+                  <animateMotion dur="5s" repeatCount="indefinite" path="M 43 277 L 270 277 L 270 107"/>
+                </circle>
+
+                <!-- 1. UG (basement) -->
+                <line x1="60" y1="319" x2="60" y2="395" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="340" y1="319" x2="340" y2="395" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="60" y1="395" x2="340" y2="395" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <text x="74" y="337" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">1. UG</text>
+
+                <!-- Power cable: Verteiler → PSU36 -->
+                <path class="topo-path" d="M 130 292 L 130 336" stroke="#FFC041" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 143 353 L 165 353" stroke="#FFC041" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+
+                <!-- XDM10-PSU36 power supply -->
+                <g class="topo-node">
+                  <rect x="115" y="336" width="28" height="34" rx="4" fill="#0e1a1c" stroke="#FFC041" stroke-width="1.4"/>
+                  <path d="M 130 343 L 124 355 L 129 355 L 128 363 L 134 351 L 129 351 Z" fill="#FFC041" stroke="#FFC041" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+                  <rect x="82" y="372" width="94" height="23" rx="4" fill="#0e1a1c"/>
+                  <text x="129" y="381" fill="rgba(255,255,255,0.82)" font-size="8" font-family="Inter, sans-serif" text-anchor="middle">XDM10-PSU36</text>
+                  <text x="129" y="391" fill="rgba(255,255,255,0.6)" font-size="8" font-family="Inter, sans-serif" text-anchor="middle">(Stromversorgung)</text>
+                  <rect x="166" y="348" width="56" height="13" rx="3" fill="#0e1a1c"/>
+                  <text x="170" y="357" fill="rgba(255,255,255,0.75)" font-size="9" font-family="Inter, sans-serif" text-anchor="start">230&#160;V&#160;AC</text>
+                </g>
+              </g>
+            </g>
+
+            <!-- ╭─ IP-Serie (LAN/PoE) — Stern-Topologie im selben Haus wie 2-Draht BUS ─╮ -->
+            <g class="topo-viz-ip" data-viz="ip" style="opacity:0;visibility:hidden;">
+              <g transform="translate(56,21) scale(1.1)">
+                <!-- House silhouette -->
+                <path d="M 50 64 L 200 22 L 350 64 Z" fill="rgba(92,219,211,0.06)" stroke="rgba(92,219,211,0.55)" stroke-width="1.5" stroke-linejoin="round"/>
+                <line x1="60" y1="64" x2="60" y2="319" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="340" y1="64" x2="340" y2="319" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="60" y1="64" x2="340" y2="64" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="60" y1="149" x2="340" y2="149" stroke="rgba(92,219,211,0.55)" stroke-width="1.2"/>
+                <line x1="60" y1="234" x2="340" y2="234" stroke="rgba(92,219,211,0.55)" stroke-width="1.2"/>
+                <line x1="60" y1="319" x2="340" y2="319" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+
+                <!-- 2. OG -->
+                <text x="74" y="82" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">2. OG</text>
+                <rect x="76" y="84" width="70" height="46" rx="2" fill="rgba(92,219,211,0.06)" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="111" y1="84" x2="111" y2="130" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="76" y1="107" x2="146" y2="107" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+
+                <!-- 1. OG -->
+                <text x="74" y="167" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">1. OG</text>
+                <rect x="76" y="169" width="70" height="46" rx="2" fill="rgba(92,219,211,0.06)" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="111" y1="169" x2="111" y2="215" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="76" y1="192" x2="146" y2="192" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+
+                <!-- EG -->
+                <text x="74" y="252" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">EG</text>
+
+                <!-- Stern-Verkabelung: jedes Gerät bekommt eine eigene Leitung zum PoE-Switch -->
+                <path class="topo-path" d="M 183 278 L 225 277" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 172 262 L 172 192 L 225 192" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 161 262 L 161 107 L 225 107" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 139 278 L 43 277" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 22 73 L 22 90 L 67 90 L 67 240 L 150 240 L 150 262" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 210 358 L 194 358 L 194 294" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 145 294 L 145 344" stroke="#FFC041" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+
+                <!-- Innenstation 2 (2. OG) -->
+                <g class="topo-node">
+                  <rect x="225" y="81" width="91" height="52" rx="8" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <rect x="234" y="91" width="72" height="32" rx="3" fill="rgba(92,219,211,0.16)" stroke="rgba(92,219,211,0.4)" stroke-width="0.6"/>
+                  <text x="270" y="110" fill="rgba(255,255,255,0.9)" font-size="9" font-weight="500" font-family="Inter, sans-serif" text-anchor="middle">Innenstation 2</text>
+                </g>
+
+                <!-- SIP-Telefon (1. OG) -->
+                <g class="topo-node">
+                  <rect x="225" y="166" width="91" height="52" rx="8" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <rect x="234" y="176" width="72" height="32" rx="3" fill="rgba(92,219,211,0.16)" stroke="rgba(92,219,211,0.4)" stroke-width="0.6"/>
+                  <text x="270" y="195" fill="rgba(255,255,255,0.9)" font-size="9" font-weight="500" font-family="Inter, sans-serif" text-anchor="middle">SIP-Telefon</text>
+                </g>
+
+                <!-- Innenstation 1 (EG) -->
+                <g class="topo-node">
+                  <rect x="225" y="251" width="91" height="52" rx="8" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <rect x="234" y="261" width="72" height="32" rx="3" fill="rgba(92,219,211,0.16)" stroke="rgba(92,219,211,0.4)" stroke-width="0.6"/>
+                  <text x="270" y="280" fill="rgba(255,255,255,0.9)" font-size="9" font-weight="500" font-family="Inter, sans-serif" text-anchor="middle">Innenstation 1</text>
+                </g>
+
+                <!-- PoE-Switch — zentraler Sternpunkt (EG) -->
+                <g class="topo-node">
+                  <rect x="132" y="247" width="68" height="13" rx="3" fill="#0e1a1c"/>
+                  <text x="166" y="256" fill="rgba(255,255,255,0.82)" font-size="9" font-family="Inter, sans-serif" text-anchor="middle">PoE-Switch</text>
+                  <rect x="130" y="262" width="72" height="32" rx="6" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="139" cy="278" r="2.2" fill="#5CDBD3"/>
+                  <circle cx="150" cy="278" r="2.2" fill="#5CDBD3"/>
+                  <circle cx="161" cy="278" r="2.2" fill="#5CDBD3"/>
+                  <circle cx="172" cy="278" r="2.2" fill="#5CDBD3"/>
+                  <circle cx="183" cy="278" r="2.2" fill="#5CDBD3"/>
+                  <circle cx="194" cy="278" r="2.2" fill="#5CDBD3"/>
+                </g>
+
+                <!-- Türstation -->
+                <g class="topo-node">
+                  <rect x="-13" y="226" width="71" height="15" rx="3" fill="#0e1a1c"/>
+                  <text x="22.5" y="237" fill="rgba(255,255,255,0.82)" font-size="11" font-family="Inter, sans-serif" text-anchor="middle">T&#252;rstation</text>
+                  <rect x="2" y="243" width="41" height="68" rx="6" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="22" cy="257" r="4" fill="none" stroke="#5CDBD3" stroke-width="1.4"/>
+                  <rect x="9" y="271" width="26" height="5" rx="1.4" fill="#5CDBD3"/>
+                  <rect x="9" y="282" width="26" height="5" rx="1.4" fill="#5CDBD3"/>
+                  <rect x="9" y="293" width="26" height="5" rx="1.4" fill="#5CDBD3"/>
+                </g>
+
+                <!-- 1. UG (Technikraum) -->
+                <line x1="60" y1="319" x2="60" y2="395" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="340" y1="319" x2="340" y2="395" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="60" y1="395" x2="340" y2="395" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <text x="74" y="337" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">1. UG</text>
+
+                <!-- 230 V AC — vertikal unter dem PoE-Switch -->
+                <g class="topo-node">
+                  <rect x="132" y="344" width="26" height="30" rx="4" fill="#0e1a1c" stroke="#FFC041" stroke-width="1.4"/>
+                  <path d="M 147 351 L 141 363 L 146 363 L 145 371 L 151 359 L 146 359 Z" fill="#FFC041" stroke="#FFC041" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+                  <rect x="120" y="378" width="50" height="12" rx="3" fill="#0e1a1c"/>
+                  <text x="145" y="386" fill="rgba(255,255,255,0.75)" font-size="8" font-family="Inter, sans-serif" text-anchor="middle">230&#160;V&#160;AC</text>
+                </g>
+
+                <!-- IP-Kamera — außen an der Fassade, Kabel führt oben ins Haus (nicht über die Türstation) -->
+                <g class="topo-node">
+                  <rect x="-6" y="32" width="56" height="12" rx="3" fill="#0e1a1c"/>
+                  <text x="22" y="40" fill="rgba(255,255,255,0.82)" font-size="8" font-family="Inter, sans-serif" text-anchor="middle">IP-Kamera</text>
+                  <circle cx="22" cy="60" r="13" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="22" cy="60" r="6" fill="none" stroke="#5CDBD3" stroke-width="1.4"/>
+                  <circle cx="22" cy="60" r="2.5" fill="#5CDBD3"/>
+                </g>
+
+                <!-- NVR -->
+                <g class="topo-node">
+                  <rect x="210" y="346" width="55" height="24" rx="5" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="222" cy="358" r="2" fill="#5CDBD3"/>
+                  <circle cx="232" cy="358" r="2" fill="#5CDBD3"/>
+                  <circle cx="242" cy="358" r="2" fill="#5CDBD3"/>
+                  <circle cx="252" cy="358" r="2" fill="#5CDBD3"/>
+                  <rect x="223" y="378" width="28" height="12" rx="3" fill="#0e1a1c"/>
+                  <text x="237" y="386" fill="rgba(255,255,255,0.82)" font-size="8" font-family="Inter, sans-serif" text-anchor="middle">NVR</text>
+                </g>
+
+                <!-- Signal pulses: Phase 1 (0–40%) nur EIN Punkt Türstation → Switch; bei 40% verschwindet er und 3 Punkte erscheinen gleichzeitig am Switch und laufen zu den Geräten -->
+                <circle class="topo-pulse" r="4" fill="#5CDBD3" filter="url(#topoGlow)">
+                  <animateMotion dur="3s" begin="0s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.4;1" keyPoints="0;1;1" path="M 43 277 L 139 278"/>
+                  <animate attributeName="opacity" dur="3s" begin="0s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4;1" values="1;0;0"/>
+                </circle>
+                <circle class="topo-pulse" r="4" fill="#5CDBD3" filter="url(#topoGlow)">
+                  <animateMotion dur="3s" begin="0s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.4;1" keyPoints="0;0;1" path="M 161 262 L 161 107 L 225 107"/>
+                  <animate attributeName="opacity" dur="3s" begin="0s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4;1" values="0;1;1"/>
+                </circle>
+                <circle class="topo-pulse" r="4" fill="#5CDBD3" filter="url(#topoGlow)">
+                  <animateMotion dur="3s" begin="0s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.4;1" keyPoints="0;0;1" path="M 172 262 L 172 192 L 225 192"/>
+                  <animate attributeName="opacity" dur="3s" begin="0s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4;1" values="0;1;1"/>
+                </circle>
+                <circle class="topo-pulse" r="4" fill="#5CDBD3" filter="url(#topoGlow)">
+                  <animateMotion dur="3s" begin="0s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.4;1" keyPoints="0;0;1" path="M 183 278 L 225 277"/>
+                  <animate attributeName="opacity" dur="3s" begin="0s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4;1" values="0;1;1"/>
+                </circle>
+              </g>
+            </g>
+
+            <!-- ╭─ IP-Serie (2-Draht IP) — Konverter-Hybrid, Türstation links ─╮ -->
+            <g class="topo-viz-ip2" data-viz="ip2" style="opacity:0;visibility:hidden;">
+              <g transform="translate(70,21) scale(1.1)">
+                <!-- House silhouette -->
+                <path d="M 50 64 L 200 22 L 350 64 Z" fill="rgba(92,219,211,0.06)" stroke="rgba(92,219,211,0.55)" stroke-width="1.5" stroke-linejoin="round"/>
+                <line x1="60" y1="64" x2="60" y2="319" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="340" y1="64" x2="340" y2="319" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="60" y1="64" x2="340" y2="64" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="60" y1="149" x2="340" y2="149" stroke="rgba(92,219,211,0.55)" stroke-width="1.2"/>
+                <line x1="60" y1="234" x2="340" y2="234" stroke="rgba(92,219,211,0.55)" stroke-width="1.2"/>
+                <line x1="60" y1="319" x2="340" y2="319" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+
+                <!-- 2. OG -->
+                <text x="74" y="82" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">2. OG</text>
+                <rect x="76" y="84" width="70" height="46" rx="2" fill="rgba(92,219,211,0.06)" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="111" y1="84" x2="111" y2="130" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="76" y1="107" x2="146" y2="107" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+
+                <!-- 1. OG -->
+                <text x="74" y="167" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">1. OG</text>
+                <rect x="76" y="169" width="70" height="46" rx="2" fill="rgba(92,219,211,0.06)" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="111" y1="169" x2="111" y2="215" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+                <line x1="76" y1="192" x2="146" y2="192" stroke="rgba(92,219,211,0.5)" stroke-width="1"/>
+
+                <!-- EG -->
+                <text x="74" y="252" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">EG</text>
+
+                <!-- Kabel: 2-Draht (rot) Bestand · IP (teal) neu verteilt · Strom (gelb) lokal -->
+                <path class="topo-path" d="M 43 277 L 55 277 L 55 358 L 90 358" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 165 358 L 140 358" stroke="#FFC041" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 115 346 L 115 300 L 140 300 L 140 294" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 22 73 L 22 90 L 67 90 L 67 240 L 151 240 L 151 262" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 162 262 L 162 107 L 225 107" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 173 262 L 173 192 L 225 192" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path class="topo-path" d="M 184 294 L 184 300 L 257 300 L 257 346" stroke="#5CDBD3" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+                <!-- Innenstation (2. OG) -->
+                <g class="topo-node">
+                  <rect x="225" y="81" width="91" height="52" rx="8" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <rect x="234" y="91" width="72" height="32" rx="3" fill="rgba(92,219,211,0.16)" stroke="rgba(92,219,211,0.4)" stroke-width="0.6"/>
+                  <text x="270" y="110" fill="rgba(255,255,255,0.9)" font-size="9" font-weight="500" font-family="Inter, sans-serif" text-anchor="middle">Innenstation</text>
+                </g>
+
+                <!-- SIP-Telefon (1. OG) — kompakt -->
+                <g class="topo-node">
+                  <rect x="225" y="176" width="52" height="32" rx="7" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <rect x="230" y="182" width="8" height="18" rx="3" fill="rgba(92,219,211,0.16)" stroke="#5CDBD3" stroke-width="1"/>
+                  <rect x="240" y="181" width="16" height="3" rx="1" fill="rgba(92,219,211,0.16)" stroke="#5CDBD3" stroke-width="0.6"/>
+                  <circle cx="242" cy="189" r="0.9" fill="#5CDBD3"/>
+                  <circle cx="249" cy="189" r="0.9" fill="#5CDBD3"/>
+                  <circle cx="256" cy="189" r="0.9" fill="#5CDBD3"/>
+                  <circle cx="242" cy="196" r="0.9" fill="#5CDBD3"/>
+                  <circle cx="249" cy="196" r="0.9" fill="#5CDBD3"/>
+                  <circle cx="256" cy="196" r="0.9" fill="#5CDBD3"/>
+                  <rect x="215" y="213" width="72" height="13" rx="3" fill="#0e1a1c"/>
+                  <text x="251" y="222" fill="rgba(255,255,255,0.9)" font-size="9" font-weight="500" font-family="Inter, sans-serif" text-anchor="middle">SIP-Telefon</text>
+                </g>
+
+                <!-- IP-Switch — zentraler Sternpunkt (EG) -->
+                <g class="topo-node">
+                  <rect x="134" y="247" width="64" height="13" rx="3" fill="#0e1a1c"/>
+                  <text x="166" y="256" fill="rgba(255,255,255,0.82)" font-size="9" font-family="Inter, sans-serif" text-anchor="middle">IP-Switch</text>
+                  <rect x="130" y="262" width="72" height="32" rx="6" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="140" cy="278" r="2.2" fill="#5CDBD3"/>
+                  <circle cx="151" cy="278" r="2.2" fill="#5CDBD3"/>
+                  <circle cx="162" cy="278" r="2.2" fill="#5CDBD3"/>
+                  <circle cx="173" cy="278" r="2.2" fill="#5CDBD3"/>
+                  <circle cx="184" cy="278" r="2.2" fill="#5CDBD3"/>
+                </g>
+
+                <!-- Türstation -->
+                <g class="topo-node">
+                  <rect x="-13" y="226" width="71" height="15" rx="3" fill="#0e1a1c"/>
+                  <text x="22.5" y="237" fill="rgba(255,255,255,0.82)" font-size="11" font-family="Inter, sans-serif" text-anchor="middle">T&#252;rstation</text>
+                  <rect x="2" y="243" width="41" height="68" rx="6" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="22" cy="257" r="4" fill="none" stroke="#5CDBD3" stroke-width="1.4"/>
+                  <rect x="9" y="271" width="26" height="5" rx="1.4" fill="#5CDBD3"/>
+                  <rect x="9" y="282" width="26" height="5" rx="1.4" fill="#5CDBD3"/>
+                  <rect x="9" y="293" width="26" height="5" rx="1.4" fill="#5CDBD3"/>
+                </g>
+
+                <!-- 1. UG (Technikraum) -->
+                <line x1="60" y1="319" x2="60" y2="395" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="340" y1="319" x2="340" y2="395" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <line x1="60" y1="395" x2="340" y2="395" stroke="rgba(92,219,211,0.55)" stroke-width="1.5"/>
+                <text x="74" y="337" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" font-family="Inter, sans-serif" letter-spacing="0.08em">1. UG</text>
+
+                <!-- IP-Kamera — außen an der Fassade -->
+                <g class="topo-node">
+                  <rect x="-6" y="32" width="56" height="12" rx="3" fill="#0e1a1c"/>
+                  <text x="22" y="40" fill="rgba(255,255,255,0.82)" font-size="8" font-family="Inter, sans-serif" text-anchor="middle">IP-Kamera</text>
+                  <circle cx="22" cy="60" r="13" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="22" cy="60" r="6" fill="none" stroke="#5CDBD3" stroke-width="1.4"/>
+                  <circle cx="22" cy="60" r="2.5" fill="#5CDBD3"/>
+                </g>
+
+                <!-- Konverter (2-Draht → IP) -->
+                <g class="topo-node">
+                  <rect x="93" y="333" width="44" height="12" rx="3" fill="#0e1a1c"/>
+                  <text x="115" y="341" fill="rgba(255,255,255,0.82)" font-size="8" font-family="Inter, sans-serif" text-anchor="middle">Konverter</text>
+                  <rect x="90" y="346" width="50" height="24" rx="5" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="100" cy="358" r="2" fill="#5CDBD3"/>
+                  <circle cx="130" cy="358" r="2" fill="#5CDBD3"/>
+                  <rect x="84" y="377" width="62" height="11" rx="3" fill="#0e1a1c"/>
+                  <text x="115" y="384" fill="rgba(255,255,255,0.55)" font-size="7" font-family="Inter, sans-serif" text-anchor="middle">2-Draht &rarr; IP</text>
+                </g>
+
+                <!-- Transformator (24V) -->
+                <g class="topo-node">
+                  <rect x="165" y="342" width="40" height="32" rx="5" fill="#0e1a1c" stroke="#FFC041" stroke-width="1.4"/>
+                  <path d="M 172 362 L 178 353 L 184 367 L 190 353 L 196 362" stroke="#FFC041" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="158" y="379" width="54" height="11" rx="3" fill="#0e1a1c"/>
+                  <text x="185" y="386" fill="rgba(255,255,255,0.75)" font-size="7" font-family="Inter, sans-serif" text-anchor="middle">Trafo 24&#160;V</text>
+                </g>
+
+                <!-- NVR -->
+                <g class="topo-node">
+                  <rect x="230" y="346" width="55" height="24" rx="5" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.5"/>
+                  <circle cx="242" cy="358" r="2" fill="#5CDBD3"/>
+                  <circle cx="252" cy="358" r="2" fill="#5CDBD3"/>
+                  <circle cx="262" cy="358" r="2" fill="#5CDBD3"/>
+                  <circle cx="272" cy="358" r="2" fill="#5CDBD3"/>
+                  <rect x="243" y="378" width="28" height="12" rx="3" fill="#0e1a1c"/>
+                  <text x="257" y="386" fill="rgba(255,255,255,0.82)" font-size="8" font-family="Inter, sans-serif" text-anchor="middle">NVR</text>
+                </g>
+
+                <!-- Signal pulses: Phase 1 (0–33%) Türstation → Konverter; Phase 2 (33–67%) Konverter → Switch; Phase 3 (67–100%) 2 gleichzeitig Switch → Innenstation/SIP. Jeder Punkt erscheint erst in seiner Phase, statt vorher wartend zu stehen. -->
+                <circle class="topo-pulse" r="4" fill="#5CDBD3" filter="url(#topoGlow)">
+                  <animateMotion dur="3.6s" begin="0s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.333;0.667;1" keyPoints="0;1;1;1" path="M 43 277 L 55 277 L 55 358 L 90 358"/>
+                  <animate attributeName="opacity" dur="3.6s" begin="0s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.333;1" values="1;0;0"/>
+                </circle>
+                <circle class="topo-pulse" r="4" fill="#5CDBD3" filter="url(#topoGlow)">
+                  <animateMotion dur="3.6s" begin="0s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.333;0.667;1" keyPoints="0;0;1;1" path="M 115 346 L 115 300 L 140 300 L 140 294"/>
+                  <animate attributeName="opacity" dur="3.6s" begin="0s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.333;0.667;1" values="0;1;0;0"/>
+                </circle>
+                <circle class="topo-pulse" r="4" fill="#5CDBD3" filter="url(#topoGlow)">
+                  <animateMotion dur="3.6s" begin="0s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.333;0.667;1" keyPoints="0;0;0;1" path="M 162 262 L 162 107 L 225 107"/>
+                  <animate attributeName="opacity" dur="3.6s" begin="0s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.667;1" values="0;1;1"/>
+                </circle>
+                <circle class="topo-pulse" r="4" fill="#5CDBD3" filter="url(#topoGlow)">
+                  <animateMotion dur="3.6s" begin="0s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.333;0.667;1" keyPoints="0;0;0;1" path="M 173 262 L 173 192 L 225 192"/>
+                  <animate attributeName="opacity" dur="3.6s" begin="0s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.667;1" values="0;1;1"/>
+                </circle>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════ ZWEI SYSTEME ═══════════ -->
+  <section class="zwei-systeme" id="systeme">
+    <div class="container">
+      <div class="systems-header">
+        <p class="overline reveal" style="margin-bottom:1.25rem;">System&uuml;bersicht</p>
+        <h2 class="systems-title reveal reveal-delay-1">
+          <span class="systems-title-line">Zwei Systeme.</span>
+          <span class="systems-title-line systems-title-accent">Ein Versprechen.</span>
+        </h2>
+        <p class="systems-sub reveal reveal-delay-2">Gestochen scharfes Video. Intuitive Bedienung. Elegantes Design. Plus die kostenlose Hik-Connect App. Der einzige Unterschied: die Verkabelung.</p>
+      </div>
+
+      <!-- System Showcase Cards -->
+      <div class="systems-grid">
+
+        <!-- 2-Draht BUS Card -->
+        <article class="sys-card sys-card-bus reveal">
+          <div class="sys-card-bg"></div>
+          <div class="sys-card-glow"></div>
+
+          <div class="sys-card-top">
+            <span class="sys-card-num">01</span>
+            <span class="sys-card-tag">
+              <span class="sys-card-dot"></span>
+              Bestand &amp; Modernisierung
+            </span>
+          </div>
+
+          <div class="sys-card-body">
+            <p class="sys-card-eyebrow">Der flexible Allrounder</p>
+            <h3 class="sys-card-title">2-Draht BUS</h3>
+            <p class="sys-card-lede">Perlenkette statt Kabelchaos &mdash; eine 2-adrige Leitung verbindet alles. Ideal, wenn Leitungen schon da sind.</p>
+
+            <div class="sys-card-stat">
+              <span class="sys-card-stat-val">2</span>
+              <div class="sys-card-stat-meta">
+                <span class="sys-card-stat-lbl">Adern</span>
+                <span class="sys-card-stat-desc">gen&uuml;gen f&uuml;r das gesamte System</span>
+              </div>
+            </div>
+
+            <div class="sys-card-feat">
+              <div class="sys-feat">
+                <div class="sys-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 3v18M6 9h6M6 15h6M18 9v12"/></svg></div>
+                <div><span class="sys-feat-l">Verkabelung</span><span class="sys-feat-v">Klingel- oder Telefonleitung</span></div>
+              </div>
+              <div class="sys-feat">
+                <div class="sys-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                <div><span class="sys-feat-l">Strom</span><span class="sys-feat-v">&Uuml;ber die 2 Dr&auml;hte</span></div>
+              </div>
+              <div class="sys-feat">
+                <div class="sys-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+                <div><span class="sys-feat-l">Setup</span><span class="sys-feat-v">Manuell &uuml;ber Drehregler</span></div>
+              </div>
+              <div class="sys-feat">
+                <div class="sys-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-13l9-4 9 4v13"/><path d="M9 9h.01"/><path d="M9 13h.01"/><path d="M9 17h.01"/><path d="M15 9h.01"/><path d="M15 13h.01"/><path d="M15 17h.01"/></svg></div>
+                <div><span class="sys-feat-l">Ideal f&uuml;r</span><span class="sys-feat-v">Bestandsgeb&auml;ude</span></div>
+              </div>
+            </div>
+
+            <a href="#" class="sys-card-cta">
+              2-Draht Serie entdecken
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- IP-System Card -->
+        <article class="sys-card sys-card-ip reveal reveal-delay-1">
+          <div class="sys-card-bg"></div>
+          <div class="sys-card-glow"></div>
+
+          <div class="sys-card-top">
+            <span class="sys-card-num">02</span>
+            <span class="sys-card-tag">
+              <span class="sys-card-dot"></span>
+              Neubau &amp; Smart-Home
+            </span>
+          </div>
+
+          <div class="sys-card-body">
+            <p class="sys-card-eyebrow">Die moderne Netzwerk-L&ouml;sung</p>
+            <h3 class="sys-card-title">IP-System</h3>
+            <p class="sys-card-lede">Echte Netzwerktechnik. Volle Integration in Smart-Home, SIP-Telefonie und IP-Kameras &mdash; mit unbegrenztem Erweiterungspotenzial.</p>
+
+            <div class="sys-card-stat">
+              <span class="sys-card-stat-val">&infin;</span>
+              <div class="sys-card-stat-meta">
+                <span class="sys-card-stat-lbl">Stationen</span>
+                <span class="sys-card-stat-desc">netzwerkseitig keine Begrenzung</span>
+              </div>
+            </div>
+
+            <div class="sys-card-feat">
+              <div class="sys-feat">
+                <div class="sys-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+                <div><span class="sys-feat-l">Verkabelung</span><span class="sys-feat-v">CAT 5e&ndash;8 oder Fernmelde</span></div>
+              </div>
+              <div class="sys-feat">
+                <div class="sys-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                <div><span class="sys-feat-l">Strom</span><span class="sys-feat-v">PoE oder 24V Trafo</span></div>
+              </div>
+              <div class="sys-feat">
+                <div class="sys-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                <div><span class="sys-feat-l">Setup</span><span class="sys-feat-v">Digital &uuml;ber Systemmen&uuml;</span></div>
+              </div>
+              <div class="sys-feat">
+                <div class="sys-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-4"/><path d="M12 16V3"/><path d="M8 7l4-4 4 4"/></svg></div>
+                <div><span class="sys-feat-l">Ideal f&uuml;r</span><span class="sys-feat-v">Neubau &amp; Sanierung</span></div>
+              </div>
+            </div>
+
+            <a href="#" class="sys-card-cta">
+              IP-Serie entdecken
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ── VS COMPARISON ── -->
+      <div class="vs reveal" id="vergleich">
+        <p class="overline" style="margin-bottom:0.75rem;text-align:center;">Direkter Vergleich</p>
+        <h3 class="section-title" style="text-align:center;font-size:clamp(1.75rem,3vw,2.5rem);margin-bottom:3.5rem;">2-Draht BUS <span class="vs-divider">vs.</span> IP-System</h3>
+
+        <!-- System headers -->
+        <div class="vs-headers">
+          <div class="vs-header vs-header-bus">
+            <div class="vs-header-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 3v18M6 9h6M6 15h6M18 9v12"/></svg>
+            </div>
+            <div>
+              <p class="vs-header-tag">System A</p>
+              <h4 class="vs-header-name">2-Draht BUS</h4>
+              <p class="vs-header-sub">Bestand &amp; Modernisierung</p>
+            </div>
+          </div>
+          <div class="vs-vs-badge">VS</div>
+          <div class="vs-header vs-header-ip">
+            <div class="vs-header-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+            </div>
+            <div>
+              <p class="vs-header-tag">System B</p>
+              <h4 class="vs-header-name">IP-System</h4>
+              <p class="vs-header-sub">Neubau &amp; Smart-Home</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparison rows -->
+        <div class="vs-rows">
+
+          <!-- Row 1: Kabelweg -->
+          <div class="vs-row reveal">
+            <div class="vs-row-merkmal">
+              <div class="vs-row-num">01</div>
+              <div>
+                <div class="vs-row-label">Kabelweg</div>
+                <div class="vs-row-q">Wie l&auml;uft das Kabel?</div>
+              </div>
+            </div>
+            <div class="vs-row-card vs-row-card-bus">
+              <div class="vs-row-visual" aria-hidden="true">
+                <svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="6" y1="16" x2="94" y2="16" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="6" cy="16" r="4" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <circle cx="28" cy="16" r="4" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <circle cx="50" cy="16" r="4" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <circle cx="72" cy="16" r="4" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <circle cx="94" cy="16" r="4" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="vs-row-content">
+                <span class="vs-row-pill">Reihe &middot; Perlenkette</span>
+                <p>Ein Kabel von Ger&auml;t zu Ger&auml;t durchgeschleift.</p>
+                <div class="vs-row-tip"><span>&rarr;</span> Spart Kabel bei mehreren Stationen.</div>
+              </div>
+            </div>
+            <div class="vs-row-card vs-row-card-ip">
+              <div class="vs-row-visual" aria-hidden="true">
+                <svg viewBox="0 0 100 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="50" y1="28" x2="10" y2="6" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="50" y1="28" x2="90" y2="6" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="50" y1="28" x2="10" y2="50" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="50" y1="28" x2="90" y2="50" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="10" cy="6" r="4" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <circle cx="90" cy="6" r="4" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <circle cx="10" cy="50" r="4" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <circle cx="90" cy="50" r="4" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <rect x="44" y="22" width="12" height="12" rx="2" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="vs-row-content">
+                <span class="vs-row-pill">Stern &middot; Hub</span>
+                <p>Jedes Ger&auml;t einzeln am zentralen Verteiler.</p>
+                <div class="vs-row-tip"><span>&rarr;</span> Ein Defekt betrifft nur ein Ger&auml;t.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Anschlussart -->
+          <div class="vs-row reveal reveal-delay-1">
+            <div class="vs-row-merkmal">
+              <div class="vs-row-num">02</div>
+              <div>
+                <div class="vs-row-label">Anschlussart</div>
+                <div class="vs-row-q">Welches Kabel brauchen Sie?</div>
+              </div>
+            </div>
+            <div class="vs-row-card vs-row-card-bus">
+              <div class="vs-row-visual" aria-hidden="true">
+                <svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="10" y1="11" x2="90" y2="11" stroke="#015253" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="10" y1="21" x2="90" y2="21" stroke="#015253" stroke-width="2" stroke-linecap="round"/>
+                  <text x="50" y="5" fill="rgba(1,82,83,0.65)" font-size="6" font-family=""Helvetica Neue", Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="500">2 ADERN</text>
+                </svg>
+              </div>
+              <div class="vs-row-content">
+                <span class="vs-row-pill">2-Adrig</span>
+                <p>Klingeldraht, Fernmelde- oder Telefonkabel.</p>
+                <div class="vs-row-tip"><span>&rarr;</span> Vorhandene Leitungen weiternutzen.</div>
+              </div>
+            </div>
+            <div class="vs-row-card vs-row-card-ip">
+              <div class="vs-row-visual" aria-hidden="true">
+                <svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="14" y1="9" x2="86" y2="9" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="14" y1="14" x2="86" y2="14" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="14" y1="19" x2="86" y2="19" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="14" y1="24" x2="86" y2="24" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                  <rect x="5" y="6" width="6" height="21" rx="1.5" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <rect x="89" y="6" width="6" height="21" rx="1.5" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="vs-row-content">
+                <span class="vs-row-pill">CAT 5e&ndash;8 / LAN</span>
+                <p>Netzwerkkabel oder geschirmtes Fernmeldekabel.</p>
+                <div class="vs-row-tip"><span>&rarr;</span> Bei Neubau ohnehin verlegt.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: Stromversorgung -->
+          <div class="vs-row reveal reveal-delay-2">
+            <div class="vs-row-merkmal">
+              <div class="vs-row-num">03</div>
+              <div>
+                <div class="vs-row-label">Stromversorgung</div>
+                <div class="vs-row-q">Wie kommt Strom zu den Ger&auml;ten?</div>
+              </div>
+            </div>
+            <div class="vs-row-card vs-row-card-bus">
+              <div class="vs-row-visual" aria-hidden="true">
+                <svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="48 6 38 18 48 18 46 26 58 14 48 14" fill="#015253" stroke="#015253" stroke-width="1" stroke-linejoin="round"/>
+                  <line x1="10" y1="16" x2="38" y2="16" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="62" y1="16" x2="90" y2="16" stroke="#015253" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="vs-row-content">
+                <span class="vs-row-pill">Daten + Strom</span>
+                <p>&Uuml;ber die selben 2 Dr&auml;hte mitversorgt.</p>
+                <div class="vs-row-tip"><span>&rarr;</span> Keine zus&auml;tzliche Steckdose n&ouml;tig.</div>
+              </div>
+            </div>
+            <div class="vs-row-card vs-row-card-ip">
+              <div class="vs-row-visual" aria-hidden="true">
+                <svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <text x="50" y="14" fill="#015253" font-size="10" font-weight="700" font-family=""Helvetica Neue", Helvetica, Arial, sans-serif" text-anchor="middle" letter-spacing="0.1em">PoE</text>
+                  <text x="50" y="26" fill="rgba(1,82,83,0.6)" font-size="6" font-family=""Helvetica Neue", Helvetica, Arial, sans-serif" text-anchor="middle" letter-spacing="0.1em">/ 24V TRAFO</text>
+                </svg>
+              </div>
+              <div class="vs-row-content">
+                <span class="vs-row-pill">PoE oder Trafo</span>
+                <p>Strom &uuml;ber Ethernet oder 24V&nbsp;Transformator.</p>
+                <div class="vs-row-tip"><span>&rarr;</span> Ein Switch versorgt alle Ger&auml;te.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 4: Einstellung -->
+          <div class="vs-row reveal reveal-delay-3">
+            <div class="vs-row-merkmal">
+              <div class="vs-row-num">04</div>
+              <div>
+                <div class="vs-row-label">Einrichtung</div>
+                <div class="vs-row-q">Wie wird das System konfiguriert?</div>
+              </div>
+            </div>
+            <div class="vs-row-card vs-row-card-bus">
+              <div class="vs-row-visual" aria-hidden="true">
+                <svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="16" r="11" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <line x1="50" y1="9" x2="50" y2="16" stroke="#015253" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="50" cy="3" r="1" fill="#015253"/>
+                  <circle cx="64" cy="16" r="1" fill="#015253"/>
+                  <circle cx="50" cy="29" r="1" fill="#015253"/>
+                  <circle cx="36" cy="16" r="1" fill="#015253"/>
+                </svg>
+              </div>
+              <div class="vs-row-content">
+                <span class="vs-row-pill">Drehregler</span>
+                <p>Manuell &uuml;ber Schalter direkt am Ger&auml;t.</p>
+                <div class="vs-row-tip"><span>&rarr;</span> Kein PC &amp; keine IP-Kenntnisse n&ouml;tig.</div>
+              </div>
+            </div>
+            <div class="vs-row-card vs-row-card-ip">
+              <div class="vs-row-visual" aria-hidden="true">
+                <svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="30" y="5" width="40" height="22" rx="2" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <line x1="35" y1="11" x2="55" y2="11" stroke="#015253" stroke-width="1"/>
+                  <line x1="35" y1="15" x2="50" y2="15" stroke="rgba(1,82,83,0.6)" stroke-width="1"/>
+                  <line x1="35" y1="19" x2="52" y2="19" stroke="rgba(1,82,83,0.6)" stroke-width="1"/>
+                  <line x1="35" y1="23" x2="48" y2="23" stroke="rgba(1,82,83,0.6)" stroke-width="1"/>
+                </svg>
+              </div>
+              <div class="vs-row-content">
+                <span class="vs-row-pill">Software / App</span>
+                <p>Digitales Systemmen&uuml; mit IP-Adressen.</p>
+                <div class="vs-row-tip"><span>&rarr;</span> Updates, Backup &amp; Fern&shy;wartung m&ouml;glich.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 5: Installation -->
+          <div class="vs-row reveal reveal-delay-4">
+            <div class="vs-row-merkmal">
+              <div class="vs-row-num">05</div>
+              <div>
+                <div class="vs-row-label">Installation</div>
+                <div class="vs-row-q">Wie aufwendig ist der Einbau?</div>
+              </div>
+            </div>
+            <div class="vs-row-card vs-row-card-bus">
+              <div class="vs-row-visual" aria-hidden="true">
+                <svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M30 22 L 45 16 L 60 22 L 70 18" stroke="#015253" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  <circle cx="30" cy="22" r="3" fill="#015253"/>
+                  <circle cx="70" cy="18" r="3" fill="#015253"/>
+                  <text x="50" y="9" fill="rgba(1,82,83,0.6)" font-size="6" font-family=""Helvetica Neue", Helvetica, Arial, sans-serif" text-anchor="middle" letter-spacing="0.1em">PLUG &amp; PLAY</text>
+                </svg>
+              </div>
+              <div class="vs-row-content">
+                <span class="vs-row-pill">Schnell</span>
+                <p>Alt-System raus, Metzler dran &mdash; fertig.</p>
+                <div class="vs-row-tip"><span>&rarr;</span> Ideal bei Modernisierung.</div>
+              </div>
+            </div>
+            <div class="vs-row-card vs-row-card-ip">
+              <div class="vs-row-visual" aria-hidden="true">
+                <svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="10" y="12" width="80" height="8" rx="2" fill="#F5F6FA" stroke="#015253" stroke-width="1.5"/>
+                  <rect x="14" y="14" width="3" height="4" rx="0.5" fill="#015253"/>
+                  <rect x="20" y="14" width="3" height="4" rx="0.5" fill="#015253"/>
+                  <rect x="26" y="14" width="3" height="4" rx="0.5" fill="#015253"/>
+                  <rect x="32" y="14" width="3" height="4" rx="0.5" fill="#015253"/>
+                  <rect x="38" y="14" width="3" height="4" rx="0.5" fill="#015253"/>
+                  <text x="65" y="18" fill="rgba(1,82,83,0.7)" font-size="5" font-family=""Helvetica Neue", Helvetica, Arial, sans-serif" letter-spacing="0.1em">SWITCH</text>
+                </svg>
+              </div>
+              <div class="vs-row-content">
+                <span class="vs-row-pill">Netzwerk-Setup</span>
+                <p>LAN-Verkabelung &amp; Switch im Heimnetz.</p>
+                <div class="vs-row-tip"><span>&rarr;</span> Volle Integration mit Smart-Home.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Fazit -->
+        <div class="vs-fazit reveal">
+          <div class="vs-fazit-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#015253" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <h4>Fazit &mdash; beide Wege f&uuml;hren ans Ziel</h4>
+            <p>Beide Systeme nutzen nur zwei Adern. Der Unterschied liegt im <em>Wie</em>: das BUS-System reiht Ger&auml;te hintereinander auf, das IP-System verteilt sie sternf&ouml;rmig. W&auml;hlen Sie das System, das am besten zu Ihrer Verkabelungssituation passt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════ DETAILED COMPARISON TABLE ═══════════ -->
+  <section class="detail-comparison">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <p class="overline reveal" style="margin-bottom:0.75rem;">Spezifikationen</p>
+        <h2 class="section-title reveal reveal-delay-1" style="font-size:clamp(1.5rem,3vw,2.25rem);">Alle drei Varianten <span class="accent">im Detail</span></h2>
+      </div>
+      <div class="detail-table-wrap reveal">
+        <table class="detail-table">
+          <thead>
+            <tr>
+              <th>Eigenschaft</th>
+              <th>2-Draht BUS Serie</th>
+              <th>IP-Serie (LAN/PoE)</th>
+              <th>IP-Serie (2-Draht IP)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Verkabelung</td>
+              <td>Bestehende Klingel- oder 2-Draht-Leitung</td>
+              <td>Netzwerkkabel (CAT 5e &ndash; CAT 8) + PoE</td>
+              <td>Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) + 24V Transformator</td>
+            </tr>
+            <tr>
+              <td>Einsatzbereich</td>
+              <td>Nachr&uuml;stung, Modernisierung &amp; Umr&uuml;stung</td>
+              <td>Neubau, Sanierung &amp; Netzwerk-Integration</td>
+              <td>Neubau, Sanierung &amp; Netzwerk-Integration</td>
+            </tr>
+            <tr>
+              <td>Daten&uuml;bertragung</td>
+              <td>Digitaler BUS &uuml;ber 2-Draht</td>
+              <td>IP-Kommunikation &uuml;ber Ethernet</td>
+              <td>IP-Kommunikation &uuml;ber Ethernet</td>
+            </tr>
+            <tr>
+              <td>App-Anbindung</td>
+              <td>Hik-Connect (kostenlos)</td>
+              <td>Hik-Connect (kostenlos)</td>
+              <td>Hik-Connect (kostenlos)</td>
+            </tr>
+            <tr>
+              <td>Innenstation</td>
+              <td>7" Touch-Display, 2-Draht-Anschluss</td>
+              <td>7" Touch-Display, RJ45-Anschluss</td>
+              <td>7" Touch-Display, 2-Draht-Anschluss</td>
+            </tr>
+            <tr>
+              <td>T&uuml;rstationen</td>
+              <td>Edelstahl / Glas / Kamera</td>
+              <td>Edelstahl / Kamera / RFID / PIN / Gesichtserkennung</td>
+              <td>Edelstahl / Kamera / RFID / PIN / Gesichtserkennung</td>
+            </tr>
+            <tr>
+              <td>Max. Innenstationen</td>
+              <td>6 pro Verteiler</td>
+              <td>Unbegrenzt (netzwerkabh&auml;ngig)</td>
+              <td>Unbegrenzt (netzwerkabh&auml;ngig)</td>
+            </tr>
+            <tr>
+              <td>Smart-Home</td>
+              <td>Eingeschr&auml;nkt</td>
+              <td>Voll integrierbar (SIP, ISAPI)</td>
+              <td>Voll integrierbar (SIP, ISAPI)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════ PRODUCT SHOWCASE ═══════════ -->
+  <section class="product-showcase">
+    <div class="container">
+      <div class="product-showcase-header">
+        <p class="overline reveal" style="margin-bottom:0.75rem;">Unser Sortiment</p>
+        <h2 class="section-title reveal reveal-delay-1">Die Metzler <span class="accent">T&uuml;rstationen</span></h2>
+      </div>
+      <div class="showcase-grid">
+        <div class="showcase-item reveal">
+          <img src="./sprechanlagen-images/metzler-xdm10-1-klingeltaster.webp" alt="XDM10 1 Klingeltaster">
+          <h4>XDM10</h4>
+          <p class="showcase-desc">1 Klingeltaster</p>
+        </div>
+        <div class="showcase-item reveal reveal-delay-1">
+          <img src="./sprechanlagen-images/metzler-xdm10-2-klingeltaster.webp" alt="XDM10 2 Klingeltaster">
+          <h4>XDM10</h4>
+          <p class="showcase-desc">2 Klingeltaster</p>
+        </div>
+        <div class="showcase-item reveal reveal-delay-2">
+          <img src="./sprechanlagen-images/metzler-xdm10-3-klingeltaster.webp" alt="XDM10 3 Klingeltaster">
+          <h4>XDM10</h4>
+          <p class="showcase-desc">3 Klingeltaster</p>
+        </div>
+        <div class="showcase-item reveal reveal-delay-3">
+          <img src="./sprechanlagen-images/metzler-sdm10-tuersprechanlage.webp" alt="SDM10 Tuersprechanlage">
+          <h4>SDM10</h4>
+          <p class="showcase-desc">Kompakt-Station</p>
+        </div>
+        <div class="showcase-item reveal reveal-delay-4">
+          <img src="./sprechanlagen-images/metzler-vdm10-modulare-tuersprechanlage.webp" alt="VDM10 Modulare Tuersprechanlage">
+          <h4>VDM10</h4>
+          <p class="showcase-desc">Modular</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════ WELCHES SYSTEM ═══════════ -->
+  <section class="product-selection" id="auswahl">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:4rem;">
+        <p class="overline reveal" style="margin-bottom:0.75rem;">Entscheidungshilfe</p>
+        <h2 class="section-title reveal reveal-delay-1">Welches System <span class="accent">passt zu Ihnen?</span></h2>
+        <p class="section-subtitle reveal reveal-delay-2">W&auml;hlen Sie basierend auf Ihrer vorhandenen Verkabelung. Kurz gesagt: Die 2-Draht BUS Serie ist perfekt f&uuml;r vorhandene Leitungen, die IP-Serie bietet maximale Flexibilit&auml;t.</p>
+      </div>
+
+      <div class="product-grid">
+        <!-- 2-Draht BUS -->
+        <div class="product-card reveal">
+          <div class="product-card-header">
+            <div class="product-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#015253" stroke-width="1.5" stroke-linecap="round"><path d="M6 3v18M6 9h6M6 15h6M18 9v12"/></svg>
+            </div>
+            <h4>2-Draht BUS Serie</h4>
+          </div>
+          <ul class="product-card-features">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Verkabelung:</strong> Einfache 2-Draht-Leitungen (wie bei alten Klingelanlagen)</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Ideal f&uuml;r:</strong> Modernisierung und Nachr&uuml;stung in Bestandsgeb&auml;uden</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Vorteil:</strong> Keine neuen Kabel &ndash; alte Leitungen werden weiterverwendet</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Installation:</strong> Einfach und schnell, minimaler Aufwand</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- IP LAN/PoE -->
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-card-header">
+            <div class="product-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#015253" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+            </div>
+            <h4>IP-Serie (LAN/PoE)</h4>
+          </div>
+          <ul class="product-card-features">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Verkabelung:</strong> CAT-Netzwerkkabel (CAT 5e &ndash; CAT 8) mit PoE</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Ideal f&uuml;r:</strong> Neubauten, Sanierungen und Netzwerk-Integration</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Vorteil:</strong> Unbegrenzte Erweiterbarkeit, SIP, IP-Kameras, Smart-Home</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Installation:</strong> Professionell und zukunftssicher</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- IP 2-Draht -->
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-card-header">
+            <div class="product-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#015253" stroke-width="1.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <h4>IP-Serie (2-Draht IP)</h4>
+          </div>
+          <ul class="product-card-features">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Verkabelung:</strong> Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) + 24V Trafo</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Ideal f&uuml;r:</strong> Sanierungen mit vorhandenen Leitungen</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Vorteil:</strong> IP-Funktionen ohne neue Verkabelung</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Installation:</strong> Nutzt bestehende Infrastruktur mit IP-Technologie</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Scenario Blocks -->
+      <div style="text-align:center;margin-bottom:3rem;margin-top:2rem;">
+        <h3 style="font-size:1.5rem;font-weight:700;color:var(--graphite-900);">Ihr Szenario?</h3>
+      </div>
+      <div class="scenario-blocks">
+        <div class="scenario-block reveal">
+          <div class="scenario-block-content">
+            <p class="overline" style="margin-bottom:0.75rem;">Modernisierung</p>
+            <h3>M&ouml;chten Sie Ihre bestehende Gegensprechanlage ersetzen?</h3>
+            <p>Wenn Sie bereits &uuml;ber ein 2-Draht-Kabelsystem (alte Gegensprechanlage) verf&uuml;gen, ist die 2-Draht-Serie ideal &ndash; einfach das alte System demontieren und die XDM10 anschlie&szlig;en. Ideal zur Umr&uuml;stung von Alt-Anlagen (Siedle, Ritto, TCS, Elcom, Grothe u.v.m.).</p>
+            <p class="scenario-disclaimer">Alle genannten Marken-, Produkt- und Firmennamen sind Eigentum ihrer jeweiligen Inhaber und dienen ausschlie&szlig;lich der Beschreibung der Kompatibilit&auml;t. Eine gesch&auml;ftliche Verbindung, Partnerschaft oder Autorisierung durch die genannten Hersteller besteht nicht.</p>
+            <a href="#" class="btn-primary" style="background:var(--teal-500);">
+              2-Draht Serie ansehen
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="scenario-block reveal reveal-delay-1">
+          <div class="scenario-block-content">
+            <p class="overline" style="margin-bottom:0.75rem;">Neubau &amp; Sanierung</p>
+            <h3>Planen Sie einen Neubau oder eine Sanierung mit Neuverkabelung?</h3>
+            <p>Dann ist die IP-Serie das richtige System f&uuml;r Sie. Ob per LAN/PoE oder 2-Draht IP &ndash; die IP-Serie bietet volle Netzwerk-Integration, Smart-Home-Kompatibilit&auml;t und unbegrenzte Erweiterungsm&ouml;glichkeiten.</p>
+            <a href="#" class="btn-primary" style="background:var(--teal-500);">
+              IP-Serie ansehen
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="faq-stage">
+        <div class="faq-header">
+          <p class="faq-label">Wissenswertes</p>
+          <h2 class="faq-heading">Gut zu wissen</h2>
+        </div>
+        <ul class="faq-list">
+          <li class="faq-item">
+            <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+              <span class="faq-left"><span class="faq-q">Kann ich mein bestehendes System auf Metzler aufr&uuml;sten?</span></span>
+              <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Ja! Mit der 2-Draht-Serie k&ouml;nnen Sie Ihre alte Gegensprechanlage problemlos ersetzen. Die vorhandenen 2-Draht-Leitungen werden einfach weiterverwendet &ndash; keine Neuverkabelung n&ouml;tig. Einfach alte Komponenten entfernen, neue Metzler-Ger&auml;te installieren und fertig.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+              <span class="faq-left"><span class="faq-q">Welches System ist das richtige f&uuml;r mich?</span></span>
+              <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Das h&auml;ngt von Ihrer Verkabelung ab: Haben Sie bereits 2-Draht-Leitungen oder eine alte Gegensprechanlage? Dann ist die 2-Draht-Serie ideal. Planen Sie einen Neubau oder haben CAT-Netzwerkkabel? Dann w&auml;hlen Sie die IP-Serie f&uuml;r maximale Flexibilit&auml;t und Netzwerk-Integration.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+              <span class="faq-left"><span class="faq-q">Funktioniert die App mit beiden Systemen?</span></span>
+              <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Ja, absolut! Beide Systeme &ndash; IP-Serie und 2-Draht BUS Serie &ndash; sind vollst&auml;ndig mit der kostenlosen Hik-Connect App kompatibel. Sie k&ouml;nnen jederzeit von &uuml;berall auf Ihre T&uuml;rsprechanlage zugreifen, Videogespr&auml;che f&uuml;hren und die T&uuml;r &ouml;ffnen.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+              <span class="faq-left"><span class="faq-q">Wie viele Innenstationen kann ich anschlie&szlig;en?</span></span>
+              <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Bei der 2-Draht BUS Serie k&ouml;nnen bis zu 6 Innenstationen pro Verteiler angeschlossen werden. Bei der IP-Serie gibt es praktisch keine Begrenzung &ndash; die Anzahl h&auml;ngt nur von Ihrem Netzwerk ab.</p>
+              </div>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+              <span class="faq-left"><span class="faq-q">Kann ich die Sprechanlage auch ohne App nutzen?</span></span>
+              <span class="faq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="faq-body">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Selbstverst&auml;ndlich! Die Innenstationen funktionieren vollst&auml;ndig eigenst&auml;ndig mit 7&quot; Touch-Display, Videobild und T&uuml;r&ouml;ffner. Die App ist ein optionaler Bonus f&uuml;r den Fernzugriff.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA BANNER ═══════════ -->
+  <section class="cta-banner section--dark">
+    <div class="container">
+      <p class="overline reveal" style="margin-bottom:0.75rem;">N&auml;chster Schritt</p>
+      <h2 class="reveal reveal-delay-1">Bereit f&uuml;r Ihre neue Sprechanlage?</h2>
+      <p class="reveal reveal-delay-2">Entdecken Sie unser Sortiment oder sehen Sie sich unsere Installationsvideos an.</p>
+      <div class="btn-group reveal reveal-delay-3">
+        <a href="#" class="btn-primary">
+          Zur Kategorieseite
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="btn-outline">Installationsvideos &ouml;ffnen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col--brand">
+          <a href="https://edelstahl-tuerklingel.de" class="footer-logo" aria-label="Metzler">
+            <svg width="28" height="28" viewBox="0 0 184.3 184.3"><rect width="184.3" height="184.3" rx="5.75" fill="#D42924"/><path fill="#fff" d="M70.19,34.81l19.04,32.98-9.58,16.57-28.59-49.55h19.13ZM70.28,108.58h0l-23.45-40.64v85.89h-16.57V34.81h16.57l33.02,57.21L123.92,15.65h19.13l-63.22,109.52-9.58-16.57.02-.02ZM153.14,153.83h-16.57v-85.87l-33,57.14h-19.13l52.11-90.28h16.57v119.02l.02-.02Z"/></svg>
+            <span>METZLER</span>
+          </a>
+          <p class="footer-tagline">Edelstahl-Tuerklingel.de ist ein Unternehmen der <a href="https://metzlergmbh.de" class="footer-mint-link">Metzler Gruppe</a></p>
+          <p class="footer-tagline" style="font-weight:700;color:var(--color-white);margin-top:0.75rem;">Der Anbieter f&uuml;r Briefk&auml;sten, Sprechanlagen, T&uuml;rklingeln und Hausnummern.</p>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-heading">Kontakt</p>
+          <div class="footer-contact-block">
+            <p class="footer-contact-label">Allgemeine Hotline:</p>
+            <a href="tel:+4971213177310" class="footer-mint-link">+49 (0) 7121 / 317 7310</a>
+            <p class="footer-contact-hours">Mo&ndash;Fr: 09:00&ndash;16:00 Uhr</p>
+          </div>
+          <div class="footer-contact-block">
+            <p class="footer-contact-label">Sprechanlagen Hotline:</p>
+            <a href="tel:+4971213177333" class="footer-mint-link">+49 (0) 7121 / 317 7333</a>
+            <p class="footer-contact-hours">Mo&ndash;Fr: 09:00&ndash;16:00 Uhr</p>
+          </div>
+          <div class="footer-contact-block">
+            <p class="footer-contact-label">E-Mail Support:</p>
+            <a href="mailto:service@metzlergmbh.de" class="footer-mint-link">service@metzlergmbh.de</a>
+          </div>
+          <div class="footer-contact-block">
+            <p class="footer-contact-label">Kontaktformular:</p>
+            <a href="https://edelstahl-tuerklingel.de/Kontakt" class="footer-mint-link">Zum Kontaktformular</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-heading">Informationen</p>
+          <ul class="footer-links">
+            <li><a href="#">Auszeichnungen</a></li>
+            <li><a href="#">Fotowettbewerb</a></li>
+            <li><a href="#">Kundenbilder</a></li>
+            <li><a href="#">Stellenangebote</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Zahlung und Versand</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-heading">Service</p>
+          <ul class="footer-links">
+            <li><a href="#">Begriffserkl&auml;rung</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#">Gesch&auml;ftskunden</a></li>
+            <li><a href="#">Newsletter</a></li>
+            <li><a href="#">VDM10 FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; 2026 Metzler GmbH</span>
+        <div class="footer-legal-links">
+          <a href="#">Datenschutz</a>
+          <a href="#">AGB</a>
+          <a href="#">Impressum</a>
+          <a href="#">Widerrufsrecht</a>
+          <a href="#">Sitemap</a>
+          <a href="#">Cookie-Einstellungen</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════ SCROLL REVEAL SCRIPT ═══════════ -->
+  <script>
+    document.querySelectorAll('.hero .reveal').forEach(el => {
+      el.classList.add('visible');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0, rootMargin: '50px 0px 0px 0px' });
+
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+
+    // ── FAQ accordion (Metzler design-system component) ──
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const body = item.querySelector('.faq-body');
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.faq-item.is-open').forEach(el => {
+        el.classList.remove('is-open');
+        el.querySelector('.faq-body').classList.remove('is-open');
+        el.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('is-open');
+        body.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // ── Apple-style Topology Toggle ──
+    (() => {
+      const toggle = document.querySelector('.topo-toggle');
+      if (!toggle) return;
+      const btns = toggle.querySelectorAll('.topo-toggle-btn');
+      const pill = toggle.querySelector('.topo-toggle-pill');
+      const textBox = document.querySelector('.topo-text');
+
+      const movePill = (btn) => {
+        if (!btn || !pill) return;
+        const toggleRect = toggle.getBoundingClientRect();
+        const btnRect = btn.getBoundingClientRect();
+        pill.style.width = `${btnRect.width}px`;
+        pill.style.transform = `translateX(${btnRect.left - toggleRect.left}px)`;
+      };
+
+      window.addEventListener('resize', () => {
+        const active = toggle.querySelector('.topo-toggle-btn.is-active');
+        movePill(active);
+      });
+      const vizMap = {
+        bus: document.querySelector('[data-viz="bus"]'),
+        ip:  document.querySelector('[data-viz="ip"]'),
+        ip2: document.querySelector('[data-viz="ip2"]')
+      };
+      const glow = document.querySelector('[data-glow]');
+
+      const content = {
+        bus: {
+          eyebrow: 'Baum-Topologie · Durchschleifen',
+          'headline-pre': 'Gerät',
+          'headline-mid': 'zu',
+          'headline-post': 'Gerät.',
+          body: 'In bestehenden Gebäuden müssen Sie oft mit eingeschränkten Anschlussmöglichkeiten rechnen. Dank der Möglichkeit, Innenstationen über ein 2-adriges Kabel durchzuschleifen, sind Sie mit dem XDM10 für nahezu jedes Szenario gerüstet.',
+          'stat1-val': '2', 'stat1-lbl': 'Adern',
+          'stat2-val': '6', 'stat2-lbl': 'Stationen<br>pro Verteiler',
+          'stat3-val': '100<span class="topo-stat-unit">%</span>', 'stat3-lbl': 'Bestandsleitung<br>nutzbar'
+        },
+        ip: {
+          eyebrow: 'Stern-Topologie · LAN / PoE',
+          'headline-pre': 'Alles',
+          'headline-mid': 'im',
+          'headline-post': 'Netz.',
+          body: 'In Neubauten oder bei Sanierungen bietet die IP-Serie mit der Stern-Topologie eine optimale Lösung. Durch Netzwerkkabel (CAT 5e – CAT 8) und PoE-Technologie bauen Sie eine robuste, skalierbare Verkabelung auf.',
+          'stat1-val': '∞', 'stat1-lbl': 'Stationen<br>möglich',
+          'stat2-val': '8<span class="topo-stat-unit">k</span>', 'stat2-lbl': 'CAT-Kabel<br>kompatibel',
+          'stat3-val': 'PoE', 'stat3-lbl': 'Power über<br>Ethernet'
+        },
+        ip2: {
+          eyebrow: 'Hybrid · 2-Draht IP',
+          'headline-pre': 'Bestand',
+          'headline-mid': 'trifft',
+          'headline-post': 'Netz.',
+          body: 'IP-Funktionen ohne neue Verkabelung. Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) übernehmen den Weg zur Türstation, ein Konverter bringt das Signal als vollwertiges IP ins Heimnetz — Smart-Home und SIP inklusive.',
+          'stat1-val': 'J-Y', 'stat1-lbl': '(ST)Y Kabel<br>nutzbar',
+          'stat2-val': '24<span class="topo-stat-unit">V</span>', 'stat2-lbl': 'Trafo<br>Stromversorgung',
+          'stat3-val': 'SIP', 'stat3-lbl': 'Voll netzwerk-<br>integriert'
+        }
+      };
+
+      const glowMap = {
+        bus: 'radial-gradient(circle, rgba(92,219,211,0.08) 0%, transparent 60%)',
+        ip:  'radial-gradient(circle, rgba(1,82,83,0.18) 0%, transparent 60%)',
+        ip2: 'radial-gradient(circle, rgba(212,41,36,0.10) 0%, rgba(92,219,211,0.06) 40%, transparent 70%)'
+      };
+
+      const setActive = (key) => {
+        toggle.setAttribute('data-active', key);
+        let activeBtn = null;
+        btns.forEach(b => {
+          const active = b.dataset.topo === key;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-selected', active);
+          if (active) activeBtn = b;
+        });
+        movePill(activeBtn);
+        textBox.classList.add('is-morphing');
+        if (glow) glow.style.background = glowMap[key];
+
+        // fade out non-active SVGs
+        Object.keys(vizMap).forEach(k => {
+          if (k !== key && vizMap[k]) vizMap[k].style.opacity = 0;
+        });
+
+        setTimeout(() => {
+          Object.keys(vizMap).forEach(k => {
+            if (vizMap[k]) vizMap[k].style.visibility = k === key ? 'visible' : 'hidden';
+          });
+          const active = vizMap[key];
+          if (active) {
+            active.querySelectorAll('.topo-path').forEach(p => { p.style.animation = 'none'; p.offsetHeight; p.style.animation = ''; });
+            active.querySelectorAll('.topo-node').forEach(n => { n.style.animation = 'none'; n.offsetHeight; n.style.animation = ''; });
+            requestAnimationFrame(() => { active.style.opacity = 1; });
+          }
+        }, 350);
+
+        // morph text
+        setTimeout(() => {
+          const c = content[key];
+          Object.keys(c).forEach(k => {
+            const el = textBox.querySelector(`[data-content="${k}"]`);
+            if (el) el.innerHTML = c[k];
+          });
+          textBox.classList.remove('is-morphing');
+        }, 350);
+      };
+
+      btns.forEach(b => b.addEventListener('click', () => setActive(b.dataset.topo)));
+      toggle.setAttribute('data-active', 'bus');
+      // Initial pill position (after layout settles + fonts load)
+      requestAnimationFrame(() => {
+        pill.style.transition = 'none';
+        movePill(toggle.querySelector('.topo-toggle-btn.is-active'));
+        requestAnimationFrame(() => { pill.style.transition = ''; });
+      });
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => movePill(toggle.querySelector('.topo-toggle-btn.is-active')));
+      }
+    })();
+  </script>
+</body>
+</html>

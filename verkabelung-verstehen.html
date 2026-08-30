@@ -359,13 +359,37 @@
       border-right: 0.0625rem solid rgba(255,255,255,0.08);
     }
     .detail-value:last-child { border-right: none; }
+    .detail-table-wrap { position: relative; }
+    .detail-scroll-hint { display: none; }
     @media (max-width: 40rem) {
-      .detail-row { grid-template-columns: 11rem repeat(3, minmax(13rem, 1fr)); min-width: 50rem; }
-      .detail-row-label { font-size: 0.6875rem; padding: 1rem; }
-      .detail-value { font-size: 0.8125rem; padding: 0.875rem 1rem; }
-      .detail-head-name { font-size: 0.8125rem; }
-      .detail-head-num { font-size: 0.625rem; }
-      .detail-head-cell { padding: 1rem; }
+      .detail-row { grid-template-columns: 9.5rem repeat(3, minmax(11.5rem, 1fr)); min-width: 44rem; }
+      .detail-row-label { font-size: 0.625rem; padding: 0.75rem; }
+      .detail-value { font-size: 0.75rem; padding: 0.75rem; }
+      .detail-head-name { font-size: 0.75rem; }
+      .detail-head-num { font-size: 0.5625rem; }
+      .detail-head-cell { padding: 0.75rem; }
+      .detail-scroll-hint {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.375rem;
+        font-size: 0.75rem;
+        color: var(--teal-mint);
+        font-family: var(--font-family);
+        margin-bottom: 0.75rem;
+        opacity: 0.85;
+      }
+      .detail-table-wrap::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 2rem;
+        background: linear-gradient(to right, transparent, #000000);
+        pointer-events: none;
+        border-radius: 0 0.25rem 0.25rem 0;
+      }
     }
 
     .topo-toggle-pill {
@@ -639,6 +663,8 @@
             <div class="detail-eyebrow">Detailvergleich</div>
             <h3 class="detail-title" id="detailTitle">Alle Eigenschaften<br><span class="detail-title-accent">im &Uuml;berblick</span></h3>
             <p class="detail-sub">Drei Wege, ein Ziel &mdash; hier sehen Sie jede technische Eigenschaft im direkten Vergleich.</p>
+            <p class="detail-scroll-hint">&harr;&nbsp;Zum Vergleichen nach links wischen</p>
+            <div class="detail-table-wrap">
             <div class="detail-rows">
               <div class="detail-row detail-row-head">
                 <div class="detail-row-label"></div>
@@ -745,6 +771,7 @@
                   <div class="detail-value">Neubauten, Gewerbe, Mehrfamilienh&auml;user</div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </aside>

@@ -182,18 +182,156 @@
     }
 
     /* Toggle (segmented control) */
+    .topo-toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0 auto 2rem;
+      max-width: 100%;
+    }
     .topo-toggle {
       position: relative;
       display: inline-flex;
-      margin: 0 auto 2rem;
       background: rgba(255,255,255,0.04);
       border: 0.0625rem solid rgba(255,255,255,0.08);
       border-radius: 5rem;
       padding: 0.375rem;
       backdrop-filter: blur(1rem);
-      max-width: calc(100% - 2rem);
+      max-width: 100%;
       box-sizing: border-box;
     }
+    .topo-compare-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.75rem;
+      background: rgba(255,255,255,0.04);
+      border: 0.0625rem solid rgba(255,255,255,0.08);
+      border-radius: 5rem;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-family);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .topo-compare-btn:hover {
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.16);
+    }
+    .topo-compare-btn svg { flex-shrink: 0; transition: transform 0.2s; }
+    .topo-compare-btn:hover svg { transform: translateX(0.2rem); }
+
+    /* Comparison modal */
+    .topo-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+      overflow-y: auto;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+    }
+    .topo-modal.is-open {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.25s ease, visibility 0s linear 0s;
+    }
+    .topo-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(0.25rem);
+    }
+    .topo-modal-panel {
+      position: relative;
+      background: var(--color-teal-900);
+      border: 0.0625rem solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      max-width: 64rem;
+      width: 100%;
+      padding: 3rem;
+      transform: translateY(1rem);
+      transition: transform 0.25s ease;
+      box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.5);
+    }
+    .topo-modal.is-open .topo-modal-panel { transform: translateY(0); }
+    .topo-modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 0.0625rem solid rgba(255,255,255,0.1);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .topo-modal-close:hover { background: rgba(255,255,255,0.14); }
+    .topo-modal-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      font-family: var(--font-family);
+      margin: 0.5rem 0 1.25rem;
+    }
+    .topo-modal-title-accent { color: var(--teal-mint); display: block; }
+    .topo-modal-sub {
+      font-size: 1.0625rem;
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-family);
+      max-width: 40rem;
+      margin-bottom: 2.5rem;
+    }
+    .topo-modal-table-wrap { overflow-x: auto; }
+    .topo-modal-table { width: 100%; border-collapse: collapse; min-width: 42rem; }
+    .topo-modal-table thead th {
+      text-align: left;
+      padding: 1rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--white);
+      border-bottom: 0.0625rem solid rgba(255,255,255,0.12);
+      font-family: var(--font-family);
+      line-height: 1.5;
+    }
+    .topo-modal-table thead th:first-child { color: rgba(255,255,255,0.4); font-weight: 500; }
+    .topo-modal-table tbody td {
+      padding: 1.25rem;
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,0.85);
+      border-bottom: 0.0625rem solid rgba(255,255,255,0.06);
+      font-family: var(--font-family);
+      line-height: 1.5;
+    }
+    .topo-modal-table tbody td:first-child {
+      color: var(--teal-mint);
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .topo-modal-table tbody tr:last-child td { border-bottom: none; }
+    @media (max-width: 48rem) {
+      .topo-modal { padding: 1.5rem 1rem; }
+      .topo-modal-panel { padding: 2rem 1.5rem; }
+    }
+
     .topo-toggle-pill {
       position: absolute;
       top: 0.375rem;
@@ -386,13 +524,23 @@
       .topo-stats { margin-left: auto; margin-right: auto; }
     }
     @media (max-width: 900px) {
+      .topo-toggle-row {
+        flex-direction: column;
+        width: calc(100% - 2rem);
+        max-width: 32rem;
+      }
       .topo-toggle {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         border-radius: 1rem;
         gap: 0.375rem;
-        width: calc(100% - 2rem);
-        max-width: 32rem;
+        width: 100%;
+      }
+      .topo-compare-btn {
+        width: 100%;
+        justify-content: center;
+        border-radius: 1rem;
+        padding: 0.875rem 1.25rem;
       }
       .topo-toggle-btn {
         flex-direction: column;
@@ -434,20 +582,104 @@
       </div>
 
       <!-- Apple-style segmented control -->
-      <div class="topo-toggle reveal reveal-delay-3" role="tablist">
-        <div class="topo-toggle-pill" data-pill></div>
-        <button class="topo-toggle-btn is-active" data-topo="bus" role="tab" aria-selected="true">
-          <span class="topo-toggle-num">01</span>
-          <span class="topo-toggle-label">2-Draht BUS</span>
+      <div class="topo-toggle-row reveal reveal-delay-3">
+        <div class="topo-toggle" role="tablist">
+          <div class="topo-toggle-pill" data-pill></div>
+          <button class="topo-toggle-btn is-active" data-topo="bus" role="tab" aria-selected="true">
+            <span class="topo-toggle-num">01</span>
+            <span class="topo-toggle-label">2-Draht BUS</span>
+          </button>
+          <button class="topo-toggle-btn" data-topo="ip" role="tab" aria-selected="false">
+            <span class="topo-toggle-num">02</span>
+            <span class="topo-toggle-label">IP-Serie (LAN/PoE)</span>
+          </button>
+          <button class="topo-toggle-btn" data-topo="ip2" role="tab" aria-selected="false">
+            <span class="topo-toggle-num">03</span>
+            <span class="topo-toggle-label">IP-Serie (2-Draht IP)</span>
+          </button>
+        </div>
+        <button class="topo-compare-btn" type="button" data-modal-open="comparisonModal">
+          <span class="topo-toggle-num">04</span>
+          <span class="topo-toggle-label">Vergleich ausblenden</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <button class="topo-toggle-btn" data-topo="ip" role="tab" aria-selected="false">
-          <span class="topo-toggle-num">02</span>
-          <span class="topo-toggle-label">IP-Serie (LAN/PoE)</span>
-        </button>
-        <button class="topo-toggle-btn" data-topo="ip2" role="tab" aria-selected="false">
-          <span class="topo-toggle-num">03</span>
-          <span class="topo-toggle-label">IP-Serie (2-Draht IP)</span>
-        </button>
+      </div>
+
+      <!-- Comparison modal (triggered by "Vergleich ausblenden") -->
+      <div class="topo-modal" id="comparisonModal" aria-hidden="true">
+        <div class="topo-modal-overlay" data-modal-close></div>
+        <div class="topo-modal-panel" role="dialog" aria-modal="true" aria-labelledby="comparisonModalTitle">
+          <button class="topo-modal-close" type="button" data-modal-close aria-label="Schlie&szlig;en">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+          <div class="topo-modal-inner">
+            <p class="overline" style="color:var(--color-mint);">Detailvergleich</p>
+            <h2 class="topo-modal-title" id="comparisonModalTitle">Alle Eigenschaften<span class="topo-modal-title-accent">im &Uuml;berblick</span></h2>
+            <p class="topo-modal-sub">Drei Wege, ein Ziel &mdash; hier sehen Sie jede technische Eigenschaft im direkten Vergleich.</p>
+            <div class="topo-modal-table-wrap">
+              <table class="topo-modal-table">
+                <thead>
+                  <tr>
+                    <th>Eigenschaft</th>
+                    <th><span class="topo-toggle-num">01</span><br>2-Draht BUS Serie</th>
+                    <th><span class="topo-toggle-num">02</span><br>IP-Serie (LAN/PoE)</th>
+                    <th><span class="topo-toggle-num">03</span><br>IP-Serie (2-Draht IP)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Verkabelung</td>
+                    <td>Bestehende Klingel- oder 2-Draht-Leitung</td>
+                    <td>Netzwerkkabel (CAT 5e &ndash; CAT 8) + PoE</td>
+                    <td>Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) + 48V Transformator</td>
+                  </tr>
+                  <tr>
+                    <td>Einsatzbereich</td>
+                    <td>Nachr&uuml;stung, Modernisierung &amp; Umr&uuml;stung</td>
+                    <td>Neubau, Sanierung &amp; Netzwerk-Integration</td>
+                    <td>Neubau, Sanierung &amp; Netzwerk-Integration</td>
+                  </tr>
+                  <tr>
+                    <td>Daten&uuml;bertragung</td>
+                    <td>Digitaler BUS &uuml;ber 2-Draht</td>
+                    <td>IP-Kommunikation &uuml;ber Ethernet</td>
+                    <td>IP-Kommunikation &uuml;ber Ethernet</td>
+                  </tr>
+                  <tr>
+                    <td>App-Anbindung</td>
+                    <td>Hik-Connect (kostenlos)</td>
+                    <td>Hik-Connect (kostenlos)</td>
+                    <td>Hik-Connect (kostenlos)</td>
+                  </tr>
+                  <tr>
+                    <td>Innenstation</td>
+                    <td>7" Touch-Display, 2-Draht-Anschluss</td>
+                    <td>7" Touch-Display, RJ45-Anschluss</td>
+                    <td>7" Touch-Display, 2-Draht-Anschluss</td>
+                  </tr>
+                  <tr>
+                    <td>T&uuml;rstationen</td>
+                    <td>Edelstahl / Glas / Kamera</td>
+                    <td>Edelstahl / Kamera / RFID / PIN / Gesichtserkennung</td>
+                    <td>Edelstahl / Kamera / RFID / PIN / Gesichtserkennung</td>
+                  </tr>
+                  <tr>
+                    <td>Max. Innenstationen</td>
+                    <td>6 pro Verteiler</td>
+                    <td>Unbegrenzt (netzwerkabh&auml;ngig)</td>
+                    <td>Unbegrenzt (netzwerkabh&auml;ngig)</td>
+                  </tr>
+                  <tr>
+                    <td>Smart-Home</td>
+                    <td>Eingeschr&auml;nkt</td>
+                    <td>Voll integrierbar (SIP, ISAPI)</td>
+                    <td>Voll integrierbar (SIP, ISAPI)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Animated content stage -->
@@ -1036,6 +1268,31 @@
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => movePill(toggle.querySelector('.topo-toggle-btn.is-active')));
       }
+    })();
+
+    // ── Comparison modal ──
+    (() => {
+      const openBtn = document.querySelector('[data-modal-open="comparisonModal"]');
+      const modal = document.getElementById('comparisonModal');
+      if (!openBtn || !modal) return;
+      const closeEls = modal.querySelectorAll('[data-modal-close]');
+
+      const openModal = () => {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+      const closeModal = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+
+      openBtn.addEventListener('click', openModal);
+      closeEls.forEach(el => el.addEventListener('click', closeModal));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
     })();
   </script>
 </body>

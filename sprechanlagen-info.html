@@ -871,7 +871,7 @@
     }
     .topo-svg {
       width: 100%;
-      max-width: 32rem;
+      max-width: 38.4rem;
       aspect-ratio: 1;
       filter: drop-shadow(0 1.5rem 3rem rgba(92,219,211,0.1));
     }
@@ -1520,7 +1520,7 @@
               </g>
             </g>
 
-            <!-- ╭─ IP-Serie (2-Draht IP) — Konverter-Hybrid, Türstation links ─╮ -->
+            <!-- ╭─ IP-Serie (2-Draht IP) — Verteiler-Hybrid, Türstation links ─╮ -->
             <g class="topo-viz-ip2" data-viz="ip2" style="opacity:0;visibility:hidden;">
               <g transform="translate(70,21) scale(1.1)">
                 <!-- House silhouette -->
@@ -1647,7 +1647,7 @@
                   <text x="282" y="386" fill="rgba(255,255,255,0.82)" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">NVR</text>
                 </g>
 
-                <!-- Signal pulses: Phase 1 (0–33%) Türstation → Konverter; Phase 2 (33–67%) Konverter → Switch; Phase 3 (67–100%) 2 gleichzeitig Switch → Innenstation/SIP. Jeder Punkt erscheint erst in seiner Phase, statt vorher wartend zu stehen. -->
+                <!-- Signal pulses: Phase 1 (0–33%) Türstation → Verteiler; Phase 2 (33–67%) Verteiler → Switch; Phase 3 (67–100%) 2 gleichzeitig Switch → Innenstation/SIP. Jeder Punkt erscheint erst in seiner Phase, statt vorher wartend zu stehen. -->
                 <circle class="topo-pulse" r="4" fill="#5CDBD3" filter="url(#topoGlow)">
                   <animateMotion dur="3.6s" begin="0s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.333;0.667;1" keyPoints="0;1;1;1" path="M 43 277 L 55 277 L 55 358 L 115 358"/>
                   <animate attributeName="opacity" dur="3.6s" begin="0s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.333;1" values="1;0;0"/>
@@ -1775,7 +1775,7 @@
               </div>
               <div class="sys-feat">
                 <div class="sys-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-                <div><span class="sys-feat-l">Strom</span><span class="sys-feat-v">PoE oder 24V Trafo</span></div>
+                <div><span class="sys-feat-l">Strom</span><span class="sys-feat-v">PoE oder 48V Trafo</span></div>
               </div>
               <div class="sys-feat">
                 <div class="sys-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
@@ -1946,12 +1946,12 @@
               <div class="vs-row-visual" aria-hidden="true">
                 <svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <text x="50" y="14" fill="#015253" font-size="10" font-weight="700" font-family=""Helvetica Neue", Helvetica, Arial, sans-serif" text-anchor="middle" letter-spacing="0.1em">PoE</text>
-                  <text x="50" y="26" fill="rgba(1,82,83,0.6)" font-size="6" font-family=""Helvetica Neue", Helvetica, Arial, sans-serif" text-anchor="middle" letter-spacing="0.1em">/ 24V TRAFO</text>
+                  <text x="50" y="26" fill="rgba(1,82,83,0.6)" font-size="6" font-family=""Helvetica Neue", Helvetica, Arial, sans-serif" text-anchor="middle" letter-spacing="0.1em">/ 48V TRAFO</text>
                 </svg>
               </div>
               <div class="vs-row-content">
                 <span class="vs-row-pill">PoE oder Trafo</span>
-                <p>Strom &uuml;ber Ethernet oder 24V&nbsp;Transformator.</p>
+                <p>Strom &uuml;ber Ethernet oder 48V&nbsp;Transformator.</p>
                 <div class="vs-row-tip"><span>&rarr;</span> Ein Switch versorgt alle Ger&auml;te.</div>
               </div>
             </div>
@@ -2054,7 +2054,7 @@
           </div>
           <div>
             <h4>Fazit &mdash; beide Wege f&uuml;hren ans Ziel</h4>
-            <p>Beide Systeme nutzen nur zwei Adern. Der Unterschied liegt im <em>Wie</em>: das BUS-System reiht Ger&auml;te hintereinander auf, das IP-System verteilt sie sternf&ouml;rmig. W&auml;hlen Sie das System, das am besten zu Ihrer Verkabelungssituation passt.</p>
+            <p>Beide Systeme f&uuml;hren zum selben Ziel: zuverl&auml;ssige Video-Kommunikation. Der Unterschied liegt im <em>Wie</em>: das BUS-System reiht Ger&auml;te &uuml;ber zwei Adern hintereinander auf, das IP-System verteilt sie sternf&ouml;rmig &uuml;ber Netzwerkkabel. W&auml;hlen Sie das System, das am besten zu Ihrer Verkabelungssituation passt.</p>
           </div>
         </div>
       </div>
@@ -2085,7 +2085,7 @@
               <td>Verkabelung</td>
               <td>Bestehende Klingel- oder 2-Draht-Leitung</td>
               <td>Netzwerkkabel (CAT 5e &ndash; CAT 8) + PoE</td>
-              <td>Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) + 24V Transformator</td>
+              <td>Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) + 48V Transformator</td>
             </tr>
             <tr>
               <td>Einsatzbereich</td>
@@ -2253,7 +2253,7 @@
           <ul class="product-card-features">
             <li>
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span><strong>Verkabelung:</strong> Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) + 24V Trafo</span>
+              <span><strong>Verkabelung:</strong> Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) + 48V Trafo</span>
             </li>
             <li>
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="#009951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2535,7 +2535,7 @@
           'headline-post': 'Netz.',
           body: 'In Neubauten oder bei Sanierungen bietet die IP-Serie mit der Stern-Topologie eine optimale Lösung. Durch Netzwerkkabel (CAT 5e – CAT 8) und PoE-Technologie bauen Sie eine robuste, skalierbare Verkabelung auf.',
           'stat1-val': '∞', 'stat1-lbl': 'Stationen<br>möglich',
-          'stat2-val': '8<span class="topo-stat-unit">k</span>', 'stat2-lbl': 'CAT-Kabel<br>kompatibel',
+          'stat2-val': '5e&ndash;8', 'stat2-lbl': 'CAT-Kabel<br>kompatibel',
           'stat3-val': 'PoE', 'stat3-lbl': 'Power über<br>Ethernet'
         },
         ip2: {
@@ -2545,7 +2545,7 @@
           'headline-post': 'Netz.',
           body: 'IP-Funktionen ohne neue Verkabelung. Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) übernehmen den Weg zur Türstation, ein 2-Draht Verteiler bringt das Signal als vollwertiges IP ins Heimnetz — Smart-Home und SIP inklusive.',
           'stat1-val': 'J-Y', 'stat1-lbl': '(ST)Y Kabel<br>nutzbar',
-          'stat2-val': '48<span class="topo-stat-unit">V</span>', 'stat2-lbl': 'Trafo<br>Stromversorgung',
+          'stat2-val': '48<span class="topo-stat-unit">V</span>', 'stat2-lbl': 'Trafo-<br>Stromversorgung',
           'stat3-val': 'SIP', 'stat3-lbl': 'Voll netzwerk-<br>integriert'
         }
       };

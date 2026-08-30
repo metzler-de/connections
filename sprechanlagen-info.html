@@ -792,7 +792,15 @@
     .detail-head-cell { padding: 1.125rem 1.25rem; background: rgba(92,219,211,0.05); }
     .detail-head-num { font-size: 0.6875rem; letter-spacing: 0.15em; color: var(--teal-mint); margin-bottom: 0.25rem; font-weight: 500; font-family: var(--font-family); }
     .detail-head-name { font-size: 0.9375rem; font-weight: 600; color: var(--white); line-height: 1.3; font-family: var(--font-family); }
-    .detail-rows { display: flex; flex-direction: column; border: 0.0625rem solid rgba(255,255,255,0.08); border-radius: 0.25rem; }
+    .detail-rows {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border: 0.0625rem solid rgba(255,255,255,0.08);
+      border-radius: 0.25rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
     .detail-rows > .detail-row:first-child > .detail-row-label,
     .detail-rows > .detail-row:first-child > .detail-row-values > .detail-value:first-child { border-top-left-radius: 0.25rem; }
     .detail-rows > .detail-row:first-child > .detail-row-values > .detail-value:last-child { border-top-right-radius: 0.25rem; }
@@ -801,13 +809,18 @@
     .detail-row {
       background: #000000;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 9rem repeat(3, minmax(13rem, 1fr));
+      min-width: 48rem;
+      flex-shrink: 0;
       border-bottom: 0.0625rem solid rgba(255,255,255,0.08);
     }
     .detail-row:last-child { border-bottom: none; }
     .detail-row:nth-child(even) { background: rgba(255,255,255,0.015); }
-    @media (min-width: 48rem) { .detail-row { grid-template-columns: 1fr 2fr; align-items: stretch; } }
     .detail-row-label {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      background-color: inherit;
       padding: 1.125rem 1.25rem;
       font-size: 0.75rem;
       font-weight: 500;
@@ -816,36 +829,20 @@
       color: var(--teal-mint);
       font-family: var(--font-family);
       line-height: 1.4;
-      border-bottom: 0.0625rem solid rgba(255,255,255,0.08);
+      border-right: 0.0625rem solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
     }
-    @media (min-width: 48rem) {
-      .detail-row-label { border-bottom: none; border-right: 0.0625rem solid rgba(255,255,255,0.08); display: flex; align-items: center; }
-    }
-    .detail-row-values { display: grid; grid-template-columns: 1fr; }
-    @media (min-width: 40rem) { .detail-row-values { grid-template-columns: repeat(3, 1fr); } }
+    .detail-row-values { display: contents; }
     .detail-value {
       padding: 1rem 1.25rem;
       font-size: 0.875rem;
       line-height: 1.55;
       color: rgba(255,255,255,0.85);
       font-family: var(--font-family);
-      border-bottom: 0.0625rem solid rgba(255,255,255,0.06);
+      border-right: 0.0625rem solid rgba(255,255,255,0.08);
     }
-    .detail-value:last-child { border-bottom: none; }
-    @media (min-width: 40rem) {
-      .detail-value { border-bottom: none; border-right: 0.0625rem solid rgba(255,255,255,0.08); }
-      .detail-value:last-child { border-right: none; }
-    }
-    .detail-value-tag {
-      font-size: 0.625rem;
-      letter-spacing: 0.15em;
-      color: var(--teal-mint);
-      text-transform: uppercase;
-      margin-bottom: 0.375rem;
-      font-weight: 500;
-      font-family: var(--font-family);
-    }
-    @media (min-width: 40rem) { .detail-value-tag { display: none; } }
+    .detail-value:last-child { border-right: none; }
 
     .topo-toggle-pill {
       position: absolute;
@@ -1379,89 +1376,89 @@
               <div class="detail-row">
                 <div class="detail-row-label">Verkabelung</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>Bestehende Klingel- oder 2-Draht-Leitung</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>Netzwerkkabel (CAT 5e &ndash; CAT 8) + PoE</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) + 48V Transformator</div>
+                  <div class="detail-value">Bestehende Klingel- oder 2-Draht-Leitung</div>
+                  <div class="detail-value">Netzwerkkabel (CAT 5e &ndash; CAT 8) + PoE</div>
+                  <div class="detail-value">Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) + 48V Transformator</div>
                 </div>
               </div>
               <div class="detail-row">
                 <div class="detail-row-label">Einsatzbereich</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>Nachr&uuml;stung, Modernisierung &amp; Umr&uuml;stung</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>Neubau, Sanierung &amp; Netzwerk-Integration</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>Neubau, Sanierung &amp; Netzwerk-Integration</div>
+                  <div class="detail-value">Nachr&uuml;stung, Modernisierung &amp; Umr&uuml;stung</div>
+                  <div class="detail-value">Neubau, Sanierung &amp; Netzwerk-Integration</div>
+                  <div class="detail-value">Neubau, Sanierung &amp; Netzwerk-Integration</div>
                 </div>
               </div>
               <div class="detail-row">
                 <div class="detail-row-label">Daten&uuml;bertragung</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>Digitaler BUS &uuml;ber 2-Draht</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>IP-Kommunikation &uuml;ber Ethernet</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>IP-Kommunikation &uuml;ber Ethernet</div>
+                  <div class="detail-value">Digitaler BUS &uuml;ber 2-Draht</div>
+                  <div class="detail-value">IP-Kommunikation &uuml;ber Ethernet</div>
+                  <div class="detail-value">IP-Kommunikation &uuml;ber Ethernet</div>
                 </div>
               </div>
               <div class="detail-row">
                 <div class="detail-row-label">App-Anbindung</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>Hik-Connect (kostenlos)</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>Hik-Connect (kostenlos)</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>Hik-Connect (kostenlos)</div>
+                  <div class="detail-value">Hik-Connect (kostenlos)</div>
+                  <div class="detail-value">Hik-Connect (kostenlos)</div>
+                  <div class="detail-value">Hik-Connect (kostenlos)</div>
                 </div>
               </div>
               <div class="detail-row">
                 <div class="detail-row-label">Innenstation</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>7" Touch-Display, 2-Draht-Anschluss, Linux-basiert</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>7" Touch-Display, RJ45-Anschluss, Linux-basiert</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>7" Touch-Display, 2-Draht-Anschluss, Linux-basiert</div>
+                  <div class="detail-value">7" Touch-Display, 2-Draht-Anschluss, Linux-basiert</div>
+                  <div class="detail-value">7" Touch-Display, RJ45-Anschluss, Linux-basiert</div>
+                  <div class="detail-value">7" Touch-Display, 2-Draht-Anschluss, Linux-basiert</div>
                 </div>
               </div>
               <div class="detail-row">
                 <div class="detail-row-label">T&uuml;rstationen</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>Edelstahl / Glas / Kamera</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>Edelstahl / Kamera / RFID / PIN / Gesichtserkennung</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>Edelstahl / Kamera / RFID / PIN / Gesichtserkennung</div>
+                  <div class="detail-value">Edelstahl / Glas / Kamera</div>
+                  <div class="detail-value">Edelstahl / Kamera / RFID / PIN / Gesichtserkennung</div>
+                  <div class="detail-value">Edelstahl / Kamera / RFID / PIN / Gesichtserkennung</div>
                 </div>
               </div>
               <div class="detail-row">
                 <div class="detail-row-label">Erweiterbarkeit</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>XDM10 Systemkomponenten</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>Netzwerkger&auml;te, SIP, PC, IP-Kameras</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>Netzwerkger&auml;te, SIP, PC, IP-Kameras</div>
+                  <div class="detail-value">XDM10 Systemkomponenten</div>
+                  <div class="detail-value">Netzwerkger&auml;te, SIP, PC, IP-Kameras</div>
+                  <div class="detail-value">Netzwerkger&auml;te, SIP, PC, IP-Kameras</div>
                 </div>
               </div>
               <div class="detail-row">
                 <div class="detail-row-label">Max. Innenstationen</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>6 pro Verteiler</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>Unbegrenzt (netzwerkabh&auml;ngig)</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>Unbegrenzt (netzwerkabh&auml;ngig)</div>
+                  <div class="detail-value">6 pro Verteiler</div>
+                  <div class="detail-value">Unbegrenzt (netzwerkabh&auml;ngig)</div>
+                  <div class="detail-value">Unbegrenzt (netzwerkabh&auml;ngig)</div>
                 </div>
               </div>
               <div class="detail-row">
                 <div class="detail-row-label">Installation</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>Einfach &amp; sauber</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>Professionell &amp; flexibel</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>Professionell &amp; flexibel</div>
+                  <div class="detail-value">Einfach &amp; sauber</div>
+                  <div class="detail-value">Professionell &amp; flexibel</div>
+                  <div class="detail-value">Professionell &amp; flexibel</div>
                 </div>
               </div>
               <div class="detail-row">
                 <div class="detail-row-label">Smart-Home</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>Eingeschr&auml;nkt</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>Voll integrierbar (SIP, ISAPI)</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>Voll integrierbar (SIP, ISAPI)</div>
+                  <div class="detail-value">Eingeschr&auml;nkt</div>
+                  <div class="detail-value">Voll integrierbar (SIP, ISAPI)</div>
+                  <div class="detail-value">Voll integrierbar (SIP, ISAPI)</div>
                 </div>
               </div>
               <div class="detail-row">
                 <div class="detail-row-label">Ideal f&uuml;r</div>
                 <div class="detail-row-values">
-                  <div class="detail-value"><div class="detail-value-tag">2-Draht BUS</div>Wohnh&auml;user, Nachr&uuml;stung, Bestandsbauten</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (LAN/PoE)</div>Neubauten, Gewerbe, Mehrfamilienh&auml;user</div>
-                  <div class="detail-value"><div class="detail-value-tag">IP-Serie (2-Draht IP)</div>Neubauten, Gewerbe, Mehrfamilienh&auml;user</div>
+                  <div class="detail-value">Wohnh&auml;user, Nachr&uuml;stung, Bestandsbauten</div>
+                  <div class="detail-value">Neubauten, Gewerbe, Mehrfamilienh&auml;user</div>
+                  <div class="detail-value">Neubauten, Gewerbe, Mehrfamilienh&auml;user</div>
                 </div>
               </div>
             </div>

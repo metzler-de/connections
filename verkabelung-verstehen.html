@@ -359,6 +359,14 @@
       border-right: 0.0625rem solid rgba(255,255,255,0.08);
     }
     .detail-value:last-child { border-right: none; }
+    @media (max-width: 40rem) {
+      .detail-row { grid-template-columns: 11rem repeat(3, minmax(13rem, 1fr)); min-width: 50rem; }
+      .detail-row-label { font-size: 0.6875rem; padding: 1rem; }
+      .detail-value { font-size: 0.8125rem; padding: 0.875rem 1rem; }
+      .detail-head-name { font-size: 0.8125rem; }
+      .detail-head-num { font-size: 0.625rem; }
+      .detail-head-cell { padding: 1rem; }
+    }
 
     .topo-toggle-pill {
       position: absolute;

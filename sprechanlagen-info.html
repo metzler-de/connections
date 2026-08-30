@@ -852,12 +852,28 @@
       font-family: var(--font-family);
       line-height: 1.4;
     }
+    .topo-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      color: var(--teal-mint);
+      font-family: var(--font-family);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .topo-cta:hover { gap: 0.75rem; color: var(--white); }
+    .topo-cta svg { flex-shrink: 0; transition: transform 0.2s; }
+    .topo-cta:hover svg { transform: translateX(0.2rem); }
 
     /* Fade-out / morph state for text content */
     .topo-text.is-morphing .topo-eyebrow,
     .topo-text.is-morphing .topo-headline span,
     .topo-text.is-morphing .topo-body,
-    .topo-text.is-morphing .topo-stat {
+    .topo-text.is-morphing .topo-stat,
+    .topo-text.is-morphing .topo-cta {
       opacity: 0;
       transform: translateY(0.75rem);
     }
@@ -1254,6 +1270,12 @@
               <div class="topo-stat-label" data-content="stat3-lbl">Bestandsleitung<br>nutzbar</div>
             </div>
           </div>
+
+          <!-- TODO (dev): point href at the real filtered category page per system -->
+          <a class="topo-cta" href="#" data-content-href="cta-href">
+            <span data-content="cta-label">2-Draht BUS Serie ansehen</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
 
         <!-- RIGHT: Custom animated SVG visualization -->
@@ -2526,7 +2548,8 @@
           body: 'In bestehenden Gebäuden müssen Sie oft mit eingeschränkten Anschlussmöglichkeiten rechnen. Dank der Möglichkeit, Innenstationen über ein 2-adriges Kabel durchzuschleifen, sind Sie mit dem XDM10 für nahezu jedes Szenario gerüstet.',
           'stat1-val': '2', 'stat1-lbl': 'Adern',
           'stat2-val': '6', 'stat2-lbl': 'Stationen<br>pro Verteiler',
-          'stat3-val': '100<span class="topo-stat-unit">%</span>', 'stat3-lbl': 'Bestandsleitung<br>nutzbar'
+          'stat3-val': '100<span class="topo-stat-unit">%</span>', 'stat3-lbl': 'Bestandsleitung<br>nutzbar',
+          'cta-label': '2-Draht BUS Serie ansehen', 'cta-href': '#'
         },
         ip: {
           eyebrow: 'Stern-Topologie · LAN / PoE',
@@ -2536,7 +2559,8 @@
           body: 'In Neubauten oder bei Sanierungen bietet die IP-Serie mit der Stern-Topologie eine optimale Lösung. Durch Netzwerkkabel (CAT 5e – CAT 8) und PoE-Technologie bauen Sie eine robuste, skalierbare Verkabelung auf.',
           'stat1-val': '∞', 'stat1-lbl': 'Stationen<br>möglich',
           'stat2-val': '5e&ndash;8', 'stat2-lbl': 'CAT-Kabel<br>kompatibel',
-          'stat3-val': 'PoE', 'stat3-lbl': 'Power über<br>Ethernet'
+          'stat3-val': 'PoE', 'stat3-lbl': 'Power über<br>Ethernet',
+          'cta-label': 'IP-Serie (LAN/PoE) ansehen', 'cta-href': '#'
         },
         ip2: {
           eyebrow: 'Hybrid · 2-Draht IP',
@@ -2546,7 +2570,8 @@
           body: 'IP-Funktionen ohne neue Verkabelung. Geschirmte Fernmeldekabel (z.B. J-Y(ST)Y) übernehmen den Weg zur Türstation, ein 2-Draht Verteiler bringt das Signal als vollwertiges IP ins Heimnetz — Smart-Home und SIP inklusive.',
           'stat1-val': 'J-Y', 'stat1-lbl': '(ST)Y Kabel<br>nutzbar',
           'stat2-val': '48<span class="topo-stat-unit">V</span>', 'stat2-lbl': 'Trafo-<br>Stromversorgung',
-          'stat3-val': 'SIP', 'stat3-lbl': 'Voll netzwerk-<br>integriert'
+          'stat3-val': 'SIP', 'stat3-lbl': 'Voll netzwerk-<br>integriert',
+          'cta-label': 'IP-Serie (2-Draht IP) ansehen', 'cta-href': '#'
         }
       };
 
@@ -2593,6 +2618,8 @@
             const el = textBox.querySelector(`[data-content="${k}"]`);
             if (el) el.innerHTML = c[k];
           });
+          const ctaLink = textBox.querySelector('[data-content-href="cta-href"]');
+          if (ctaLink && c['cta-href']) ctaLink.setAttribute('href', c['cta-href']);
           textBox.classList.remove('is-morphing');
         }, 350);
       };

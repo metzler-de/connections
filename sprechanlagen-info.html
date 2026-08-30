@@ -196,60 +196,6 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* ── NETWORK LINE PATTERN (shared utility) ── */
-    .grid-net {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        repeating-linear-gradient(90deg,
-          transparent 0,
-          transparent calc(8rem - 1px),
-          rgba(92, 219, 211, 0.06) calc(8rem - 1px),
-          rgba(92, 219, 211, 0.06) 8rem),
-        repeating-linear-gradient(0deg,
-          transparent 0,
-          transparent calc(8rem - 1px),
-          rgba(92, 219, 211, 0.04) calc(8rem - 1px),
-          rgba(92, 219, 211, 0.04) 8rem);
-      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
-      z-index: 0;
-    }
-
-    /* Flowing connection lines — thin teal segments that sweep across */
-    .data-node {
-      position: absolute;
-      width: 6rem;
-      height: 0.0625rem;
-      background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(92, 219, 211, 0.7) 50%,
-        transparent 100%);
-      pointer-events: none;
-      opacity: 0;
-      transform-origin: left center;
-      animation: dataLineSweep 8s ease-in-out infinite;
-      z-index: 0;
-      filter: drop-shadow(0 0 0.375rem rgba(92,219,211,0.4));
-    }
-    .data-node.vertical {
-      width: 0.0625rem;
-      height: 6rem;
-      background: linear-gradient(180deg,
-        transparent 0%,
-        rgba(92, 219, 211, 0.7) 50%,
-        transparent 100%);
-    }
-    .data-node.diagonal { transform: rotate(35deg); }
-    .data-node.diagonal-rev { transform: rotate(-35deg); }
-    @keyframes dataLineSweep {
-      0%   { opacity: 0; clip-path: inset(0 100% 0 0); }
-      30%  { opacity: 1; clip-path: inset(0 0 0 0); }
-      70%  { opacity: 1; clip-path: inset(0 0 0 0); }
-      100% { opacity: 0; clip-path: inset(0 0 0 100%); }
-    }
-
 
     /* ── HERO ── */
     .hero {
@@ -1209,11 +1155,6 @@
   <!-- ═══════════ APPLE-STYLE TOPOLOGY ═══════════ -->
   <section class="topo-apple" id="topologie">
     <div class="topo-apple-bg-glow" data-glow></div>
-    <div class="grid-net"></div>
-    <div class="data-node" style="top:12%;left:6%;animation-delay:0.5s;"></div>
-    <div class="data-node vertical" style="top:20%;left:90%;animation-delay:2.5s;"></div>
-    <div class="data-node diagonal-rev" style="top:78%;left:5%;animation-delay:1.5s;"></div>
-    <div class="data-node" style="top:88%;left:75%;animation-delay:3.5s;"></div>
     <div class="container">
 
       <div class="topo-apple-header">

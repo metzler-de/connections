@@ -314,23 +314,23 @@
     }
 
     /* ── ZWEI SYSTEME (system comparison) ── */
-    .zwei-systeme { background: var(--color-paper); padding: 4rem 0; }
+    .zwei-systeme { background: linear-gradient(#000000, #01292A, #000000); padding: 4rem 0; }
     .systems-header { text-align: center; max-width: 44rem; margin: 0 auto 3rem; }
     .systems-title {
       font-size: clamp(1.75rem, 3.4vw, 2.5rem);
       font-weight: 700;
       line-height: 1.18;
       letter-spacing: -0.02em;
-      color: var(--color-digital-black);
+      color: var(--color-white);
       font-family: var(--font-family);
       margin-bottom: 1rem;
     }
     .systems-title-line { display: block; }
-    .systems-title-accent { color: var(--color-teal); }
+    .systems-title-accent { color: var(--color-mint); }
     .systems-sub {
       font-size: 1.0625rem;
       line-height: 1.6;
-      color: var(--color-graphite-700);
+      color: rgba(255,255,255,0.72);
       font-family: var(--font-family);
       max-width: 36rem;
       margin: 0 auto;
@@ -412,7 +412,7 @@
 
     /* ── VS COMPARISON ── */
     .vs { margin-top: 0.5rem; }
-    .vs-divider { color: var(--color-teal); font-style: italic; font-weight: 400; padding: 0 0.4rem; }
+    .vs-divider { color: var(--color-mint); font-style: italic; font-weight: 400; padding: 0 0.4rem; }
     .section-title { color: var(--color-digital-black); font-family: var(--font-family); }
     .section-title .accent { color: var(--color-teal); }
     .section-subtitle { font-size: 1.0625rem; line-height: 1.6; color: var(--color-graphite-700); max-width: 36rem; margin: 0 auto; font-family: var(--font-family); }
@@ -1089,13 +1089,6 @@
       .footer-legal { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
       .footer-legal-links { gap: 1rem; }
     }
-
-    /* ── TEMP REVIEW MODE: only #topologie visible — remove this block to restore the full page ── */
-    .site-header, .hero, .zwei-systeme, .detail-comparison, .product-showcase,
-    .product-selection, .faq-section, .cta-banner, .site-footer,
-    .section-divider {
-      display: none !important;
-    }
   </style>
 </head>
 <body>
@@ -1638,7 +1631,7 @@
   <div class="section-divider"></div>
 
   <!-- ═══════════ ZWEI SYSTEME ═══════════ -->
-  <section class="zwei-systeme" id="systeme">
+  <section class="zwei-systeme section--dark" id="systeme">
     <div class="container">
       <div class="systems-header">
         <p class="overline reveal" style="margin-bottom:1.25rem;">System&uuml;bersicht</p>

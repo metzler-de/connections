@@ -323,8 +323,8 @@
     .detail-row {
       background: #000000;
       display: grid;
-      grid-template-columns: 9rem repeat(3, minmax(13rem, 1fr));
-      min-width: 48rem;
+      grid-template-columns: 14rem repeat(3, minmax(13rem, 1fr));
+      min-width: 53rem;
       flex-shrink: 0;
       border-bottom: 0.0625rem solid rgba(255,255,255,0.08);
     }
@@ -346,6 +346,8 @@
       border-right: 0.0625rem solid rgba(92,219,211,0.2);
       display: flex;
       align-items: center;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .detail-row-values { display: contents; }
     .detail-value {

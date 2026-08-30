@@ -628,18 +628,6 @@
       pointer-events: none;
       z-index: 0;
     }
-    .topo-apple-bg-glow {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      width: 60rem;
-      height: 60rem;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(92,219,211,0.08) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-      transition: background 0.8s ease;
-    }
     .topo-apple .container { position: relative; z-index: 1; }
     .topo-apple-header { text-align: center; margin-bottom: 3rem; }
     .topo-apple-title {
@@ -891,13 +879,6 @@
       white-space: nowrap;
     }
     .topo-toggle-btn.is-active { color: var(--white); }
-    .topo-toggle-num {
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      opacity: 0.5;
-    }
-    .topo-toggle-btn.is-active .topo-toggle-num { color: var(--teal-mint); opacity: 1; }
 
     /* Stage */
     .topo-stage {
@@ -1084,7 +1065,6 @@
         border-color: rgba(92,219,211,0.4);
       }
       .topo-toggle-pill { display: none; }
-      .topo-toggle-num { font-size: 0.6875rem; }
       .topo-toggle-label { font-size: 0.75rem; line-height: 1.2; }
     }
     @media (max-width: 640px) {
@@ -1336,7 +1316,6 @@
 
   <!-- ═══════════ APPLE-STYLE TOPOLOGY ═══════════ -->
   <section class="topo-apple" id="topologie">
-    <div class="topo-apple-bg-glow" data-glow></div>
     <div class="container">
 
       <div class="topo-apple-header">
@@ -1353,20 +1332,16 @@
         <div class="topo-toggle" role="tablist">
           <div class="topo-toggle-pill" data-pill></div>
           <button class="topo-toggle-btn is-active" data-topo="bus" role="tab" aria-selected="true">
-            <span class="topo-toggle-num">01</span>
             <span class="topo-toggle-label">2-Draht BUS</span>
           </button>
           <button class="topo-toggle-btn" data-topo="ip" role="tab" aria-selected="false">
-            <span class="topo-toggle-num">02</span>
             <span class="topo-toggle-label">IP-Serie (LAN/PoE)</span>
           </button>
           <button class="topo-toggle-btn" data-topo="ip2" role="tab" aria-selected="false">
-            <span class="topo-toggle-num">03</span>
             <span class="topo-toggle-label">IP-Serie (2-Draht IP)</span>
           </button>
         </div>
         <button class="topo-compare-btn" type="button" id="detailOpen">
-          <span class="topo-toggle-num">04</span>
           <span class="topo-toggle-label">Vergleich ausblenden</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -2788,8 +2763,6 @@
         ip:  document.querySelector('[data-viz="ip"]'),
         ip2: document.querySelector('[data-viz="ip2"]')
       };
-      const glow = document.querySelector('[data-glow]');
-
       const content = {
         bus: {
           eyebrow: 'Baum-Topologie · Durchschleifen',
@@ -2826,12 +2799,6 @@
         }
       };
 
-      const glowMap = {
-        bus: 'radial-gradient(circle, rgba(92,219,211,0.08) 0%, transparent 60%)',
-        ip:  'radial-gradient(circle, rgba(1,82,83,0.18) 0%, transparent 60%)',
-        ip2: 'radial-gradient(circle, rgba(212,41,36,0.10) 0%, rgba(92,219,211,0.06) 40%, transparent 70%)'
-      };
-
       const setActive = (key) => {
         toggle.setAttribute('data-active', key);
         let activeBtn = null;
@@ -2843,7 +2810,6 @@
         });
         movePill(activeBtn);
         textBox.classList.add('is-morphing');
-        if (glow) glow.style.background = glowMap[key];
 
         // fade out non-active SVGs
         Object.keys(vizMap).forEach(k => {
